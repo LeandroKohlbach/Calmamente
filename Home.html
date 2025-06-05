@@ -165,30 +165,36 @@
             line-height: 1.5;
         }
  
+        /* ESTILOS PARA O BOTÃO PRINCIPAL "COMEÇAR A DIVERSÃO" */
         .btn-explorar {
-    background-color: var(--cor-primaria-acao);
-    color: var(--cor-texto-claro);
-    padding: 0.8rem 1.8rem;
-    border: none;
-    border-radius: 40px;
-    font-family: var(--fonte-titulo);
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    display: block;
-    margin: 1.5rem auto 0.5rem auto;
-    max-width: 220px;
-    text-align: center;
-}
+            background-color: var(--cor-primaria-acao);
+            color: var(--cor-texto-claro);
+            padding: 1.2rem 2.8rem; /* Aumentado para um botão maior em telas grandes */
+            border: none;
+            border-radius: 40px;
+            font-family: var(--fonte-titulo);
+            font-size: 1.8rem; /* Aumentado para uma fonte maior em telas grandes */
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-flex; /* Use inline-flex para alinhar o texto e o ícone e permitir gap */
+            align-items: center;
+            justify-content: center; /* Centraliza o conteúdo dentro do botão */
+            gap: 10px; /* Espaço entre o texto e o ícone */
+            margin: 2.5rem auto 0.5rem auto; /* Ajusta margem para seções como hero-world */
+            max-width: 300px; /* Define uma largura máxima para o botão em telas maiores */
+            text-align: center; /* Garante que o texto e ícone fiquem centralizados caso o botão seja maior */
+        }
+ 
         .btn-explorar:hover {
             background-color: #33AADD; /* Azul mais escuro */
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0,0,0,0.25);
         }
+ 
         .btn-explorar i {
-            font-size: 2rem;
+            font-size: 2rem; /* Ajustado para um ícone maior, combinando com o novo tamanho do botão */
             color: var(--cor-secundaria-acao); /* Amarelo no ícone */
         }
  
@@ -223,7 +229,7 @@
         /* Seção "Nossas Ilhas de Aventura" */
         .adventure-islands {
             background-color: var(--cor-grama-escura); /* Fundo verde */
-             padding: 4rem 5%;
+            padding: 4rem 5%;
             text-align: center;
             border-top-left-radius: 50px;
             border-top-right-radius: 50px;
@@ -231,7 +237,7 @@
             border-bottom-right-radius: 50px; /* Adicionado */
             box-shadow: inset 0 8px 15px rgba(0,0,0,0.1);
             position: relative;
-}
+        }
  
         .adventure-islands h2 {
             font-family: var(--fonte-titulo);
@@ -248,7 +254,8 @@
             gap: 2.5rem;
         }
  
-         .island-card {
+        /* ESTILOS PARA OS CARDS DAS ILHAS E SEUS BOTÕES */
+        .island-card {
             background-color: var(--cor-nuvem); /* Fundo branco para os cards */
             border-radius: 30px;
             padding: 2.5rem;
@@ -258,9 +265,9 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 2px solid var(--cor-borda-elementos);
             display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
         }
  
         .island-card:hover {
@@ -303,7 +310,22 @@
             font-family: var(--fonte-corpo);
             font-size: 1.15rem;
             color: var(--cor-texto-medio);
+            margin-bottom: 1.5rem; /* Adiciona espaço entre o texto e o botão do card */
         }
+ 
+        /* ESTILOS ESPECÍFICOS PARA OS BOTÕES DENTRO DOS CARDS DAS ILHAS */
+        .island-card .btn-explorar {
+            padding: 0.8rem 1.8rem; /* Menor preenchimento para os botões dos cards */
+            font-size: 1.2rem; /* Menor fonte para os botões dos cards */
+            max-width: 220px; /* Largura máxima para os botões dos cards */
+            display: block; /* Essencial: Faz o botão se comportar como um bloco para centralização do margin auto */
+            margin: 1.5rem auto 0.5rem auto; /* Centraliza entre texto e borda inferior do card */
+        }
+ 
+        .island-card .btn-explorar i {
+            font-size: 1.3rem; /* Ajusta o tamanho do ícone para o botão do card */
+        }
+ 
  
         /* Seção "Junte-se à Diversão" */
         .join-fun {
@@ -337,7 +359,7 @@
             border: none;
             border-radius: 40px;
             font-family: var(--fonte-titulo);
-            font-size: 1.8rem;
+            font-size: 1.8rem; /* Mantido grande por padrão para telas maiores */
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 6px 12px rgba(0,0,0,0.2);
@@ -397,9 +419,12 @@
             .hero-world p {
                 font-size: 1.3rem;
             }
-            .btn-explorar {
+            .btn-explorar { /* Ajusta o botão principal "Começar a Diversão" para telas médias */
                 font-size: 1.5rem;
-                padding: 1.2rem 2.5rem;
+                padding: 1rem 2.5rem;
+            }
+            .btn-explorar i {
+                font-size: 1.8rem;
             }
             .adventure-islands h2 {
                 font-size: 3rem;
@@ -450,9 +475,9 @@
             .hero-world p {
                 font-size: 1.1rem;
             }
-            .btn-explorar {
+            .btn-explorar { /* Ajusta o botão principal "Começar a Diversão" para telas menores */
                 font-size: 1.3rem;
-                padding: 1rem 2rem;
+                padding: 0.8rem 2rem;
                 gap: 8px;
             }
             .btn-explorar i {
@@ -521,9 +546,9 @@
             .hero-world h1 {
                 font-size: 2.2rem;
             }
-            .btn-explorar {
+            .btn-explorar { /* Ajusta o botão principal "Começar a Diversão" para telas muito pequenas */
                 font-size: 1.1rem;
-                padding: 0.8rem 1.5rem;
+                padding: 0.7rem 1.5rem;
             }
             .adventure-islands h2, .join-fun h2 {
                 font-size: 2rem;
@@ -577,6 +602,7 @@
                     <p>Descubra o que você está sentindo com nossos amigos emotivos e interações divertidas! É como um mapa para suas emoções.</p>
                     <button class="btn-explorar">
                         <i class="fas fa-compass"></i> Explorar Ilha
+                    </button>
                 </div>
                 <div class="island-card">
                     <div class="icon-wrapper"><i class="fas fa-leaf"></i></div>
@@ -584,6 +610,7 @@
                     <p>Respire fundo e relaxe com atividades que trazem paz e tranquilidade. Encontre seu momento de paz!</p>
                     <button class="btn-explorar">
                         <i class="fas fa-tree"></i> Explorar Bosque
+                    </button>
                 </div>
                 <div class="island-card">
                     <div class="icon-wrapper"><i class="fas fa-calendar-check"></i></div>
@@ -591,6 +618,7 @@
                     <p>Organize sua rotina, veja seu progresso e celebre suas vitórias em seu diário pessoal!</p>
                     <button class="btn-explorar">
                         <i class="fas fa-book"></i> Ver Diário
+                    </button>
                 </div>
             </div>
         </section>
