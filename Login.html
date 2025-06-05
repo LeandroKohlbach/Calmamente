@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calmamente: Seu Mundo de Emoções!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Variáveis de Cores e Fontes - Mais VIBRANTES e LÚDICAS */
+        :root {
+            --cor-fundo-principal: #E0F7FA; /* Azul Céu Bem Leve */
+            --cor-nuvem: #FFFFFF; /* Branco Nuvem */
+            --cor-grama-clara: #DCE8CC; /* Verde Menta Claro */
+            --cor-grama-escura: #A8D8B9; /* Verde Pastel Vibrante */
+ 
+            --cor-primaria-acao: #66CCFF; /* Azul Brilhante */
+            --cor-secundaria-acao: #FFD700; /* Amarelo Sol */
+            --cor-terciaria-acao: #FF99CC; /* Rosa Chiclete */
+            --cor-roxo-divertido: #B388FF; /* Roxo Claro */
+ 
+            --cor-texto-escuro: #333333; /* Cinza Escuro */
+            --cor-texto-medio: #555555; /* Cinza Médio */
+            --cor-texto-claro: #FFFFFF; /* Branco */
+ 
+            --cor-sombra-leve: rgba(0, 0, 0, 0.1);
+            --cor-borda-elementos: rgba(0, 0, 0, 0.15); /* Bordas suaves para elementos */
+ 
+            --fonte-titulo: 'Fredoka', sans-serif; /* Fonte mais arredondada e divertida */
+            --fonte-corpo: 'Nunito', sans-serif; /* Fonte legível e amigável */
+        }
+ 
+        /* Reset Básico */
+        body, h1, h2, h3, p, ul, li, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
+            font-family: var(--fonte-corpo);
+            background-color: var(--cor-fundo-principal);
+            color: var(--cor-texto-escuro);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: linear-gradient(to bottom, var(--cor-fundo-principal), var(--cor-grama-clara)); /* Degradê suave de céu para terra */
+            min-height: 100vh; /* Ocupa a altura total da viewport */
+            display: flex;
+            flex-direction: column;
+        }
+ 
+        main {
+            flex-grow: 1; /* Faz o main ocupar o espaço restante */
+        }
+ 
+        /* Estilo para as nuvens (elementos decorativos) */
+        .cloud {
+            position: absolute;
+            background: var(--cor-nuvem);
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            animation: moveCloud 30s linear infinite;
+            z-index: 0; /* Fica atrás do conteúdo */
+        }
+        .cloud.small { width: 80px; height: 50px; top: 10%; left: -10%; animation-duration: 25s; }
+        .cloud.medium { width: 120px; height: 70px; top: 5%; left: 30%; animation-duration: 35s; }
+        .cloud.large { width: 150px; height: 90px; top: 15%; right: -10%; animation-duration: 40s; }
+        .cloud:nth-child(2) { animation-delay: -10s; }
+        .cloud:nth-child(3) { animation-delay: -20s; }
+        .cloud:nth-child(4) { animation-delay: -5s; left: -20%; }
+        .cloud:nth-child(5) { animation-delay: -15s; top: 20%; right: -15%; animation-duration: 30s;}
+ 
+        @keyframes moveCloud {
+            0% { transform: translateX(-100vw); }
+            100% { transform: translateX(200vw); }
+        }
+ 
+        /* Cabeçalho - Mais Lúdico */
+        header {
+            background-color: var(--cor-primaria-acao); /* Azul para o céu */
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px var(--cor-sombra-leve);
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            position: relative;
+            z-index: 1000;
+        }
+ 
+        .logo {
+            font-family: var(--fonte-titulo);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+ 
+        .nav-buttons button {
+            background-color: var(--cor-roxo-divertido);
+            border: none;
+            color: var(--cor-texto-claro);
+            padding: 0.8rem 1.6rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: var(--fonte-corpo);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-left: 1rem;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .nav-buttons button:hover {
+            background-color: rgb(175, 106, 196);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+        }
+        .nav-buttons button.cadastrar {
+            background-color: var(--cor-terciaria-acao); /* Rosa */
+            color: var(--cor-texto-claro);
+        }
+        .nav-buttons button.cadastrar:hover {
+            background-color: #FF7FAF;
+            color: var(--cor-texto-claro);
+        }
+ 
+        /* Seção Principal (Hero) - Mundo de Descobertas */
+        .hero-world {
+            position: relative;
+            text-align: center;
+            padding: 6rem 5% 8rem;
+            margin-bottom: 3rem;
+            overflow: hidden; /* Para as nuvens */
+            min-height: 400px;
+        }
+ 
+        .hero-content {
+            position: relative;
+            z-index: 1; /* Garante que o conteúdo fique acima das nuvens */
+        }
+ 
+        /* Estilo para o botão de login */
+        .login-form-button { /* Nova classe para o botão de login específico */
+            background-color: var(--cor-terciaria-acao); /* Rosa Chiclete - Era a cor original do seu botão*/
+            color: var(--cor-texto-claro);
+            padding: 0.7rem 1.4rem;
+            border-radius: 20px;
+            border: none;
+            font-family: var(--fonte-corpo);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+ 
+        .login-form-button:hover {
+            background-color: #FF7FAF; /* Rosa Chiclete mais escuro */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+        }
+       
+        .caixa-input { /* Nova classe para envolver o input e o ícone */
+            position: relative;
+            width: 300px; /* Largura do input */
+            max-width: 400px;
+            margin: 0 auto 0.8rem auto; /* Centraliza a caixa e adiciona margem inferior */
+        }
+        .caixa-input input {
+            width: 100%;
+            padding: 0.8rem;
+            padding-left: 2.5rem; /* Espaço para o ícone */
+            margin-bottom: 5px;
+            border-radius: 20px;
+            border: 2px solid var(--cor-borda-elementos);
+            font-size: 1rem;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+ 
+        .caixa-input .icon {
+            position: absolute;
+            left: 1rem; /* Posição do ícone dentro do input */
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--cor-texto-medio); /* Cor do ícone */
+        }
+ 
+        .caixa-login {
+            margin-bottom: 1.5rem;
+            text-align: left;
+            /* margin-left: 25%; Removido para centralizar a caixa-input */
+        }
+        .caixa-login h2, .caixa-senha h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.2rem;
+            color: var(--cor-texto-escuro);
+            margin-bottom: 0.5rem;
+            margin-left: -50px;
+            text-align: center; /* Centraliza o título */
+        }
+ 
+        .hero-world h1 {
+            font-family: var(--fonte-titulo);
+            font-size: 4rem;
+            color: var(--cor-roxo-divertido); /* Roxo divertido */
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.05);
+            animation: bounceIn 1s ease-out; /* Animação de entrada */
+        }
+        .hero-world h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.7rem;
+            color: var(--cor-primaria-acao); /* Roxo divertido */
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.05);
+            animation: bounceIn 1s ease-out; /* Animação de entrada */
+        }
+ 
+        .hero-world p {
+            font-family: var(--fonte-corpo);
+            font-size: 1.25rem;
+            color: var(--cor-texto-medio);
+            max-width: 620px;
+            margin: 0 auto 2.5rem auto;
+            line-height: 1.5;
+        }
+        .login {
+            background-color: var(--cor-nuvem); /* Fundo verde claro */
+            padding: 3.5rem;
+            border-radius: 30px;
+            box-shadow: 0 8px 16px var(--cor-sombra-leve);
+            display: inline-block;
+            animation: bounceIn 1s ease-out; /* Animação de entrada */
+        }
+        .login-btn-wrapper { /* Novo wrapper para o botão e o link */
+            display: flex; /* Altera para coluna para o botão e o link ficarem um abaixo do outro */
+            align-items: center; /* Centraliza horizontalmente */
+            margin-left: 144px;
+            gap: 0.5rem; /* Espaçamento entre o botão e o link */
+        }
+       
+        .login-link { /* Estilo específico para o link "Cadastrar-se" */
+            font-family: var(--fonte-corpo);
+            color: var(--cor-primaria-acao); /* Cor do link */
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        .login-link:hover {
+            color: var(--cor-roxo-divertido); /* Cor do link ao passar o mouse */
+        }
+ 
+ 
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% {
+                animation-timing-function: cubic-bezier(0.215, .61, .355, 1);
+            }
+            0% {
+                opacity: 0;
+                transform: scale3d(.3, .3, .3);
+            }
+            20% {
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+            40% {
+                transform: scale3d(.9, .9, .9);
+            }
+            60% {
+                opacity: 1;
+                transform: scale3d(1.03, 1.03, 1.03);
+            }
+            80% {
+                transform: scale3d(.97, .97, .97);
+            }
+            100% {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+       
+        footer {
+            background-color: var(--cor-grama-escura); /* Mesma cor da seção de ilhas */
+            color: var(--cor-texto-claro);
+            text-align: center;
+            padding: 2.5rem 5%;
+            font-size: 1rem;
+            box-shadow: inset 0 5px 10px rgba(0,0,0,0.1);
+        }
+ 
+        footer .links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+ 
+        footer .links a {
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.5rem 0;
+            font-weight: 600;
+        }
+ 
+        footer .links a:hover {
+            color: var(--cor-secundaria-acao);
+            transform: translateY(-2px);
+        }
+ 
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .hero-world h1 {
+                font-size: 3.5rem;
+            }
+            .hero-world p {
+                font-size: 1.3rem;
+            }
+            .login {
+                padding: 1.5rem; /* Adjusted padding for smaller screens */
+            }
+        }
+ 
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 3%;
+            }
+            .logo {
+                margin-bottom: 0.8rem;
+                font-size: 1.8rem;
+            }
+            .nav-buttons {
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+            }
+            .nav-buttons button {
+                flex: 1;
+                margin: 0 0.4rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+ 
+            .hero-world {
+                padding: 4rem 3% 6rem;
+            }
+            .hero-world h1 {
+                font-size: 2.8rem;
+            }
+            .hero-world p {
+                font-size: 1.1rem;
+            }
+            .login {
+                padding: 1rem; /* Further adjusted padding */
+            }
+            footer {
+                padding: 2rem 3%;
+                font-size: 0.9rem;
+            }
+            footer .links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+ 
+        @media (max-width: 480px) {
+            .hero-world h1 {
+                font-size: 2.2rem;
+            }
+            .login {
+                padding: 0.8rem; /* Even more adjusted padding */
+            }
+            .caixa-input, .caixa-input input {
+                width: 90%; /* Make inputs more responsive */
+            }
+            .caixa-input input {
+                padding-left: 2.5rem; /* Ensure padding for icon is maintained */
+            }
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="cloud small" style="top: 10%; left: 5%;"></div>
+    <div class="cloud medium" style="top: 20%; left: 40%;"></div>
+    <div class="cloud large" style="top: 15%; right: 5%;"></div>
+    <div class="cloud small" style="top: 30%; left: 15%;"></div>
+    <div class="cloud medium" style="top: 25%; right: 20%;"></div>
+ 
+    <header>
+        <a href="Home.html" class="logo">Calmamente</a>
+        <nav class="nav-buttons">
+            <button class="login">Entrar</button>
+            <button class="cadastrar">Criar Conta!</button>
+        </nav>
+    </header>
+ 
+    <main>
+        <section class="hero-world">    
+            <div class="hero-content">
+                <div class="login">
+                    <h1>Log in</h1>
+                        <p>Bem-vindo(a) de volta ao Calmamente! Entre com sua conta para continuar sua jornada de descobertas e aventuras emocionais.</p>
+ 
+                        <div class="caixa-login">
+                           <h2>Informe seu Usuário</h2>
+                           <div class="caixa-input"> <i class="fas fa-user icon"></i> <input type="text" placeholder="Usuário">
+                           </div>
+                        </div>
+ 
+                        <div class="caixa-login">
+                           <h2>Informe sua Senha</h2>
+                           <div class="caixa-input"> <i class="fas fa-lock icon"></i> <input type="password" placeholder="Senha">
+                           </div>
+                        </div>
+ 
+                    <div class="login-btn-wrapper">
+                         <button class="login-form-button">Log in</button>
+                         <a href="cadastro.html" class="login-link">Não possui uma conta? Cadastrar-se</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+    <footer>
+        <p>&copy; 2025 Calmamente. Todos os direitos reservados. Feito com carinho para você!</p>
+        <div class="links">
+            <a href="#">Privacidade</a>
+            <a href="#">Termos</a>
+            <a href="#">Ajuda</a>
+        </div>
+    </footer>
+ 
+</body>
+</html>
+ 
