@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calmamente: Seu Mundo de Emoções!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Variáveis de Cores e Fontes - Mais VIBRANTES e LÚDICAS */
+        :root {
+            --cor-fundo-principal: #E0F7FA; /* Azul Céu Bem Leve */
+            --cor-nuvem: #FFFFFF; /* Branco Nuvem */
+            --cor-grama-clara: #DCE8CC; /* Verde Menta Claro */
+            --cor-grama-escura: #A8D8B9; /* Verde Pastel Vibrante */
+ 
+            --cor-primaria-acao: #66CCFF; /* Azul Brilhante */
+            --cor-secundaria-acao: #FFD700; /* Amarelo Sol */
+            --cor-terciaria-acao: #FF99CC; /* Rosa Chiclete */
+            --cor-roxo-divertido: #B388FF; /* Roxo Claro */
+ 
+            --cor-texto-escuro: #333333; /* Cinza Escuro */
+            --cor-texto-medio: #555555; /* Cinza Médio */
+            --cor-texto-claro: #FFFFFF; /* Branco */
+ 
+            --cor-sombra-leve: rgba(0, 0, 0, 0.1);
+            --cor-borda-elementos: rgba(0, 0, 0, 0.15); /* Bordas suaves para elementos */
+ 
+            --fonte-titulo: 'Fredoka', sans-serif; /* Fonte mais arredondada e divertida */
+            --fonte-corpo: 'Nunito', sans-serif; /* Fonte legível e amigável */
+        }
+ 
+        /* Reset Básico */
+        body, h1, h2, h3, p, ul, li, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
+            font-family: var(--fonte-corpo);
+            background-color: var(--cor-fundo-principal);
+            color: var(--cor-texto-escuro);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: linear-gradient(to bottom, var(--cor-fundo-principal), var(--cor-grama-clara)); /* Degradê suave de céu para terra */
+            min-height: 100vh; /* Ocupa a altura total da viewport */
+            display: flex;
+            flex-direction: column;
+        }
+ 
+        main {
+            flex-grow: 1; /* Faz o main ocupar o espaço restante */
+        }
+ 
+        /* Estilo para as nuvens (elementos decorativos) */
+        .cloud {
+            position: absolute;
+            background: var(--cor-nuvem);
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            animation: moveCloud 30s linear infinite;
+            z-index: 0; /* Fica atrás do conteúdo */
+        }
+        .cloud.small { width: 80px; height: 50px; top: 10%; left: -10%; animation-duration: 25s; }
+        .cloud.medium { width: 120px; height: 70px; top: 5%; left: 30%; animation-duration: 35s; }
+        .cloud.large { width: 150px; height: 90px; top: 15%; right: -10%; animation-duration: 40s; }
+        .cloud:nth-child(2) { animation-delay: -10s; }
+        .cloud:nth-child(3) { animation-delay: -20s; }
+        .cloud:nth-child(4) { animation-delay: -5s; left: -20%; }
+        .cloud:nth-child(5) { animation-delay: -15s; top: 20%; right: -15%; animation-duration: 30s;}
+ 
+        @keyframes moveCloud {
+            0% { transform: translateX(-100vw); }
+            100% { transform: translateX(200vw); }
+        }
+ 
+        /* Cabeçalho - Mais Lúdico */
+        header {
+            background-color: var(--cor-primaria-acao); /* Azul para o céu */
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px var(--cor-sombra-leve);
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            position: relative;
+            z-index: 1000;
+        }
+ 
+        .logo {
+            font-family: var(--fonte-titulo);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+ 
+        .nav-buttons button {
+            background-color: var(--cor-roxo-divertido); /* Amarelo vibrante */
+            border: none;
+            color: var(--cor-texto-claro);
+            padding: 0.8rem 1.6rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: var(--fonte-corpo);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-left: 1rem;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .nav-buttons button:hover {
+            background-color: rgb(175, 106, 196); /* Amarelo um pouco mais escuro */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+        }
+        .nav-buttons button.cadastrar {
+            background-color: var(--cor-terciaria-acao); /* Rosa */
+            color: var(--cor-texto-claro);
+        }
+        .nav-buttons button.cadastrar:hover {
+            background-color: #FF7FAF; /* Rosa mais escuro */
+            color: var(--cor-texto-claro);
+        }
+       
+ 
+        /* Seção Principal (Hero) - Mundo de Descobertas */
+        .hero-world {
+            position: relative;
+            text-align: center;
+            padding: 6rem 5% 8rem;
+            margin-bottom: 3rem;
+            overflow: hidden; /* Para as nuvens */
+            min-height: 400px;
+        }
+ 
+        .hero-content {
+            position: relative;
+            z-index: 1; /* Garante que o conteúdo fique acima das nuvens */
+        }
+ 
+        .hero-world h1 {
+            font-family: var(--fonte-titulo);
+            font-size: 4rem;
+            color: var(--cor-roxo-divertido); /* Roxo divertido */
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.05);
+            animation: bounceIn 1s ease-out; /* Animação de entrada */
+        }
+ 
+        .hero-world p {
+            font-family: var(--fonte-corpo);
+            font-size: 1.5rem;
+            color: var(--cor-texto-medio);
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+            line-height: 1.5;
+        }
+ 
+        /* ESTILOS PARA O BOTÃO PRINCIPAL "COMEÇAR A DIVERSÃO" */
+        .btn-explorar {
+            background-color: var(--cor-primaria-acao);
+            color: var(--cor-texto-claro);
+            padding: 1.2rem 2.8rem; /* Aumentado para um botão maior em telas grandes */
+            border: none;
+            border-radius: 40px;
+            font-family: var(--fonte-titulo);
+            font-size: 1.8rem; /* Aumentado para uma fonte maior em telas grandes */
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-flex; /* Use inline-flex para alinhar o texto e o ícone e permitir gap */
+            align-items: center;
+            justify-content: center; /* Centraliza o conteúdo dentro do botão */
+            gap: 10px; /* Espaço entre o texto e o ícone */
+            margin: 2.5rem auto 0.5rem auto; /* Ajusta margem para seções como hero-world */
+            max-width: 300px; /* Define uma largura máxima para o botão em telas maiores */
+            text-align: center; /* Garante que o texto e ícone fiquem centralizados caso o botão seja maior */
+        }
+ 
+        .btn-explorar:hover {
+            background-color: #33AADD; /* Azul mais escuro */
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+        }
+ 
+        .btn-explorar i {
+            font-size: 2rem; /* Ajustado para um ícone maior, combinando com o novo tamanho do botão */
+            color: var(--cor-secundaria-acao); /* Amarelo no ícone */
+        }
+ 
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% {
+                animation-timing-function: cubic-bezier(0.215, .61, .355, 1);
+            }
+            0% {
+                opacity: 0;
+                transform: scale3d(.3, .3, .3);
+            }
+            20% {
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+            40% {
+                transform: scale3d(.9, .9, .9);
+            }
+            60% {
+                opacity: 1;
+                transform: scale3d(1.03, 1.03, 1.03);
+            }
+            80% {
+                transform: scale3d(.97, .97, .97);
+            }
+            100% {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+ 
+ 
+        /* Seção "Nossas Ilhas de Aventura" */
+        .adventure-islands {
+            background-color: var(--cor-grama-escura); /* Fundo verde */
+            padding: 4rem 5%;
+            text-align: center;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            border-bottom-left-radius: 50px; /* Adicionado */
+            border-bottom-right-radius: 50px; /* Adicionado */
+            box-shadow: inset 0 8px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+ 
+        .adventure-islands h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 3.5rem;
+            color: var(--cor-texto-claro); /* Branco para contraste */
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+        }
+ 
+        .island-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+        }
+ 
+        /* ESTILOS PARA OS CARDS DAS ILHAS E SEUS BOTÕES */
+        .island-card {
+            background-color: var(--cor-nuvem); /* Fundo branco para os cards */
+            border-radius: 30px;
+            padding: 2.5rem;
+            width: 320px;
+            box-shadow: 0 8px 16px var(--cor-sombra-leve);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid var(--cor-borda-elementos);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+ 
+        .island-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+ 
+        .island-card .icon-wrapper {
+            background: linear-gradient(45deg, var(--cor-primaria-acao), var(--cor-secundaria-acao));
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 1.5rem auto;
+            font-size: 4rem;
+            color: var(--cor-texto-claro);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .island-card:hover .icon-wrapper {
+            transform: rotate(5deg);
+        }
+ 
+        /* Cores de fundo dos ícones dos cards */
+        .island-card:nth-child(1) .icon-wrapper { background: linear-gradient(45deg, #FF99CC, #FF66A3); } /* Rosa */
+        .island-card:nth-child(2) .icon-wrapper { background: linear-gradient(45deg, #FFD700, #FFB800); } /* Amarelo */
+        .island-card:nth-child(3) .icon-wrapper { background: linear-gradient(45deg, #66CCFF, #3399FF); } /* Azul */
+        .island-card:nth-child(4) .icon-wrapper { background: linear-gradient(45deg, #B388FF, #9966FF); } /* Roxo */
+ 
+        .island-card h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--cor-roxo-divertido);
+            margin-bottom: 1rem;
+        }
+ 
+        .island-card p {
+            font-family: var(--fonte-corpo);
+            font-size: 1.15rem;
+            color: var(--cor-texto-medio);
+            margin-bottom: 1.5rem; /* Adiciona espaço entre o texto e o botão do card */
+        }
+ 
+        /* ESTILOS ESPECÍFICOS PARA OS BOTÕES DENTRO DOS CARDS DAS ILHAS */
+        .island-card .btn-explorar {
+            padding: 0.8rem 1.8rem; /* Menor preenchimento para os botões dos cards */
+            font-size: 1.2rem; /* Menor fonte para os botões dos cards */
+            max-width: 220px; /* Largura máxima para os botões dos cards */
+            display: block; /* Essencial: Faz o botão se comportar como um bloco para centralização do margin auto */
+            margin: 1.5rem auto 0.5rem auto; /* Centraliza entre texto e borda inferior do card */
+        }
+ 
+        .island-card .btn-explorar i {
+            font-size: 1.3rem; /* Ajusta o tamanho do ícone para o botão do card */
+        }
+ 
+ 
+        /* Seção "Junte-se à Diversão" */
+        .join-fun {
+            background-color: var(--cor-primaria-acao); /* Azul */
+            padding: 5rem 5%;
+            text-align: center;
+            color: var(--cor-texto-claro);
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            box-shadow: inset 0 8px 15px rgba(0,0,0,0.1);
+        }
+ 
+        .join-fun h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 3.8rem;
+            margin-bottom: 1.8rem;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+        }
+ 
+        .join-fun p {
+            font-family: var(--fonte-corpo);
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+        }
+ 
+        .btn-join {
+            background-color: var(--cor-secundaria-acao); /* Amarelo */
+            color: var(--cor-texto-escuro);
+            padding: 1.5rem 3.5rem;
+            border: none;
+            border-radius: 40px;
+            font-family: var(--fonte-titulo);
+            font-size: 1.8rem; /* Mantido grande por padrão para telas maiores */
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-join:hover {
+            background-color: #FFC107;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+        }
+        .btn-join i {
+            font-size: 2rem;
+            color: var(--cor-primaria-acao); /* Azul no ícone */
+        }
+ 
+        /* Rodapé - Base do Mundo */
+        footer {
+            background-color: var(--cor-borda-elementos); /* Mesma cor da seção de ilhas */
+            color: var(--cor-texto-claro);
+            text-align: center;
+            padding: 2.5rem 5%;
+            font-size: 1rem;
+            box-shadow: inset 0 5px 10px rgba(0,0,0,0.1);
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            position: relative;
+        }
+ 
+        footer .links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+ 
+        footer .links a {
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.5rem 0;
+            font-weight: 600;
+        }
+ 
+        footer .links a:hover {
+            color: var(--cor-secundaria-acao);
+            transform: translateY(-2px);
+        }
+ 
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .hero-world h1 {
+                font-size: 3.5rem;
+            }
+            .hero-world p {
+                font-size: 1.3rem;
+            }
+            .btn-explorar { /* Ajusta o botão principal "Começar a Diversão" para telas médias */
+                font-size: 1.5rem;
+                padding: 1rem 2.5rem;
+            }
+            .btn-explorar i {
+                font-size: 1.8rem;
+            }
+            .adventure-islands h2 {
+                font-size: 3rem;
+            }
+            .island-card {
+                width: 45%; /* Duas colunas */
+            }
+            .join-fun h2 {
+                font-size: 3rem;
+            }
+            .join-fun p {
+                font-size: 1.2rem;
+            }
+            .btn-join {
+                font-size: 1.5rem;
+                padding: 1.2rem 2.5rem;
+            }
+        }
+ 
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 3%;
+            }
+            .logo {
+                margin-bottom: 0.8rem;
+                font-size: 1.8rem;
+            }
+            .nav-buttons {
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+            }
+            .nav-buttons button {
+                flex: 1;
+                margin: 0 0.4rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+ 
+            .hero-world {
+                padding: 4rem 3% 6rem;
+            }
+            .hero-world h1 {
+                font-size: 2.8rem;
+            }
+            .hero-world p {
+                font-size: 1.1rem;
+            }
+            .btn-explorar { /* Ajusta o botão principal "Começar a Diversão" para telas menores */
+                font-size: 1.3rem;
+                padding: 0.8rem 2rem;
+                gap: 8px;
+            }
+            .btn-explorar i {
+                font-size: 1.5rem;
+            }
+ 
+            .adventure-islands {
+                padding: 3rem 3%;
+                border-top-left-radius: 40px;
+                border-top-right-radius: 40px;
+            }
+            .adventure-islands h2 {
+                font-size: 2.5rem;
+            }
+            .island-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            .island-card {
+                width: 90%;
+                padding: 2rem;
+            }
+            .island-card .icon-wrapper {
+                width: 80px;
+                height: 80px;
+                font-size: 3.5rem;
+            }
+            .island-card h3 {
+                font-size: 1.7rem;
+            }
+            .island-card p {
+                font-size: 1.05rem;
+            }
+ 
+            .join-fun {
+                padding: 4rem 3%;
+                border-top-left-radius: 40px;
+                border-top-right-radius: 40px;
+            }
+            .join-fun h2 {
+                font-size: 2.5rem;
+            }
+            .join-fun p {
+                font-size: 1.1rem;
+            }
+            .btn-join {
+                font-size: 1.3rem;
+                padding: 1rem 2rem;
+                gap: 8px;
+            }
+            .btn-join i {
+                font-size: 1.5rem;
+            }
+            footer {
+                padding: 2rem 3%;
+                font-size: 0.9rem;
+            }
+            footer .links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+ 
+        @media (max-width: 480px) {
+            .hero-world h1 {
+                font-size: 2.2rem;
+            }
+            .btn-explorar { /* Ajusta o botão principal "Começar a Diversão" para telas muito pequenas */
+                font-size: 1.1rem;
+                padding: 0.7rem 1.5rem;
+            }
+            .adventure-islands h2, .join-fun h2 {
+                font-size: 2rem;
+            }
+            .island-card h3 {
+                font-size: 1.5rem;
+            }
+            .island-card p {
+                font-size: 1rem;
+            }
+            .btn-join {
+                font-size: 1.1rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="cloud small" style="top: 10%; left: 5%;"></div>
+    <div class="cloud medium" style="top: 20%; left: 40%;"></div>
+    <div class="cloud large" style="top: 15%; right: 5%;"></div>
+    <div class="cloud small" style="top: 30%; left: 15%;"></div>
+    <div class="cloud medium" style="top: 25%; right: 20%;"></div>
+ 
+    <header>
+        <a href="HomeLogado.html" class="logo">Calmamente</a>
+        <nav class="nav-buttons">
+            <a href="Login.html"><button class="login">Entrar</button></a>
+            <a href="Cadastro.html"><button class="cadastrar">Criar Conta!</button></a>
+        </nav>
+    </header>
+ 
+    <main>
+        <section class="hero-world">
+            <div class="hero-content">
+                <h1>Bem-vindo(a) ao Mundo Calmamente!</h1>
+                <p>Aqui, você pode criar suas próprias palavras faladas para se expressar e explorar sentimentos com vídeos especiais que te ajudarão a se sentir melhor.</p>
+                <button class="btn-explorar">
+                    Começar a Diversão <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+ 
+      <section class="adventure-islands">
+            <h2>Nossas Ilhas de Aventura</h2>
+            <div class="island-container">
+                <div class="island-card">
+                    <div class="icon-wrapper"><i class="fas fa-smile-beam"></i></div>
+                    <h3>Ilha dos Sentimentos</h3>
+                    <p>Conecte-se com suas emoções! Clique no que você está sentindo e descubra vídeos especialmente escolhidos para te ajudar a lidar com cada sentimento.</p>
+                    <button class="btn-explorar">
+                        <i class="fas fa-compass"></i> Explorar Ilha
+                    </button>
+                </div>
+                <div class="island-card">
+                    <div class="icon-wrapper"><i class="fas fa-comment-dots"></i></div> <h3>Minhas Palavras Faladas</h3>
+                    <p>Crie, edite e organize suas próprias pastas com frases e imagens. Clique em uma pasta e a frase ganhará vida em áudio, ajudando você a se comunicar de forma única!</p>
+                    <button class="btn-explorar">
+                        <i class="fas fa-folder-open"></i> Criar Palavras
+                    </button>
+                </div>
+                <div class="island-card">
+                    <div class="icon-wrapper"><i class="fas fa-calendar-check"></i></div>
+                    <h3>Meu Diário de Aventuras</h3>
+                    <p>Visualize o Relatório sobre suas Emoções</p>
+                    <button class="btn-explorar">
+                        <i class="fas fa-book"></i> Ver Diário
+                    </button>
+                </div>
+            </div>
+        </section>
+ 
+    </main>
+ 
+    <footer>
+        <p>&copy; 2025 Calmamente. Todos os direitos reservados. Feito com carinho para você!</p>
+        <div class="links">
+            <a href="#">Privacidade</a>
+            <a href="#">Termos</a>
+            <a href="#">Ajuda</a>
+        </div>
+    </footer>
+ 
+</body>
+</html>
