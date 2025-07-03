@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+:root {
+	--cor-fundo-principal: #E0F7FA;
+	--cor-nuvem: #FFFFFF;
+	--cor-grama-clara: #DCE8CC;
+	--cor-grama-escura: #A8D8B9;
+	--cor-primaria-acao: #66CCFF;
+	--cor-secundaria-acao: #FFD700;
+	--cor-terciaria-acao: #FF99CC;
+	--cor-roxo-divertido: #B388FF;
+	--cor-texto-escuro: #333333;
+	--cor-texto-medio: #555555;
+	--cor-texto-claro: #FFFFFF;
+	--cor-sombra-leve: rgba(0, 0, 0, 0.1);
+	--cor-borda-elementos: rgba(0, 0, 0, 0.15);
+	--fonte-titulo: 'Fredoka', sans-serif;
+	--fonte-corpo: 'Nunito', sans-serif;
+}
+
+.botaoFeedback{
+	position: fixed;
+      bottom: 20px;
+      left: 20px;
+      padding: 15px 20px;
+      background-color: --cor-roxo-divertido;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      font-size: 16px;
+
+}
+
+	
