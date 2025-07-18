@@ -1,0 +1,133 @@
+@charset "UTF-8";
+  header {
+        background-color: var(--cor-primaria-acao); 
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+         box-shadow: 0 4px 8px var(--cor-sombra-leve);
+        border-bottom-left-radius: 10px; 
+        border-bottom-right-radius: 10px;
+        position: relative;
+        z-index: 1000;
+        max-height: 65px;
+        letter-spacing: 1px;
+}
+
+        .logo {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem; 
+            font-weight: 700;
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.15); 
+            transition: transform 0.2s ease, text-shadow 0.2s ease;
+        }
+        .logo:hover {
+            transform: scale(1.02);
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+        }
+        
+        
+        .header-center-container {
+            flex-grow: 1; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-links-container {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .nav-link {
+            text-decoration: none; 
+            color: var(--cor-texto-claro);
+            font-family: var(--fonte-titulo);
+            font-weight: 700;
+            transition: transform 0.2s ease, text-shadow 0.2s ease;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+            padding: 0.5rem 1rem; 
+            border-radius: 15px; 
+            margin: 0 10px; 
+            font-size: 1.3rem; 
+        }
+
+        .nav-link:hover {
+            transform: translateY(-3px); 
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+            background-color: rgba(255, 255, 255, 0.1); 
+        }
+
+        .btn-header {
+            font-family: var(--fonte-corpo);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--cor-texto-claro);
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--cor-texto-claro);
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            white-space: nowrap; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn-header:hover {
+            background-color: var(--cor-texto-claro);
+            color: var(--cor-primaria-acao);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .btn-header.btn-highlight {
+            background-color: var(--cor-secundaria-acao); 
+            color: var(--cor-texto-escuro);
+            border-color: var(--cor-secundaria-acao);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+            .btn-header.btn-highlight:hover {
+            background-color: #FFC107; 
+            border-color: #FFC107;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        } 
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px; 
+        }
+         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 3%;
+            }
+
+            .logo {
+                margin-bottom: 0.8rem;
+                font-size: 1.8rem;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .nav-buttons button {
+                flex: 1;
+                margin: 0 0.4rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            .header-center-container {
+                justify-content: center; /* Garante centralização */
+                flex-grow: 1; /* Permite ocupar o espaço */
+                margin: 0; /* Remove margens extras */
+                padding: 0;
+            }
+         }
+        

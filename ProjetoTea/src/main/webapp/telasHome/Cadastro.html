@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calmamente: Seu Mundo de Emoções!</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/header.css">
+    <style>
+        /* Variáveis de Cores e Fontes - Mais VIBRANTES e LÚDICAS */
+        :root {
+            --cor-fundo-principal: #E0F7FA;
+            /* Azul Céu Bem Leve */
+            --cor-nuvem: #FFFFFF;
+            /* Branco Nuvem */
+            --cor-grama-clara: #DCE8CC;
+            /* Verde Menta Claro */
+            --cor-grama-escura: #A8D8B9;
+            /* Verde Pastel Vibrante */
+
+            --cor-primaria-acao: #66CCFF;
+            /* Azul Brilhante */
+            --cor-secundaria-acao: #FFD700;
+            /* Amarelo Sol */
+            --cor-terciaria-acao: #FF99CC;
+            /* Rosa Chiclete */
+            --cor-roxo-divertido: #B388FF;
+            /* Roxo Claro */
+
+            --cor-texto-escuro: #333333;
+            /* Cinza Escuro */
+            --cor-texto-medio: #555555;
+            /* Cinza Médio */
+            --cor-texto-claro: #FFFFFF;
+            /* Branco */
+
+            --cor-sombra-leve: rgba(0, 0, 0, 0.1);
+            --cor-borda-elementos: rgba(0, 0, 0, 0.15);
+            /* Bordas suaves para elementos */
+
+            --fonte-titulo: 'Fredoka', sans-serif;
+            /* Fonte mais arredondada e divertida */
+            --fonte-corpo: 'Nunito', sans-serif;
+            /* Fonte legível e amigável */
+        }
+
+        /* Reset Básico */
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        li,
+        button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--fonte-corpo);
+            background-color: var(--cor-fundo-principal);
+            color: var(--cor-texto-escuro);
+            line-height: 1.6;
+            overflow-x: hidden;
+            /* **Mantido aqui para controle global** */
+            background-image: linear-gradient(to bottom, var(--cor-fundo-principal), var(--cor-grama-clara));
+            /* Degradê suave de céu para terra */
+            min-height: 100vh;
+            /* Ocupa a altura total da viewport */
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex-grow: 1;
+            /* Faz o main ocupar o espaço restante */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+            /* Add some vertical padding for main content */
+        }
+
+        /* Estilo para as nuvens (elementos decorativos) */
+        .cloud {
+            position: absolute;
+            background: var(--cor-nuvem);
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            animation: moveCloud 30s linear infinite;
+            z-index: 0;
+            /* Fica atrás do conteúdo */
+        }
+
+        .cloud.small {
+            width: 80px;
+            height: 50px;
+            top: 10%;
+            left: -10%;
+            animation-duration: 25s;
+        }
+
+        .cloud.medium {
+            width: 120px;
+            height: 70px;
+            top: 5%;
+            left: 30%;
+            animation-duration: 35s;
+        }
+
+        .cloud.large {
+            width: 150px;
+            height: 90px;
+            top: 15%;
+            right: -10%;
+            animation-duration: 40s;
+        }
+
+        .cloud:nth-child(2) {
+            animation-delay: -10s;
+        }
+
+        .cloud:nth-child(3) {
+            animation-delay: -20s;
+        }
+
+        .cloud:nth-child(4) {
+            animation-delay: -5s;
+            left: -20%;
+        }
+
+        .cloud:nth-child(5) {
+            animation-delay: -15s;
+            top: 20%;
+            right: -15%;
+            animation-duration: 30s;
+        }
+
+        @keyframes moveCloud {
+            0% {
+                transform: translateX(-100vw);
+            }
+
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+
+        /* ===========
+         HEADER 
+        ===========
+        */
+       
+        @keyframes bounceIn {
+
+            0%,
+            20%,
+            40%,
+            60%,
+            80%,
+            100% {
+                animation-timing-function: cubic-bezier(0.215, .61, .355, 1);
+            }
+
+            0% {
+                opacity: 0;
+                transform: scale3d(.3, .3, .3);
+            }
+
+            20% {
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+
+            40% {
+                transform: scale3d(.9, .9, .9);
+            }
+
+            60% {
+                opacity: 1;
+                transform: scale3d(1.03, 1.03, 1.03);
+            }
+
+            80% {
+                transform: scale3d(.97, .97, .97);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        .cadastro {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 30px;
+            padding: 2.5rem;
+            width: 90%;
+            /* Adjust width for better responsiveness */
+            max-width: 600px;
+            /* Set a max-width */
+            margin: 2rem auto;
+            /* Center the form */
+            box-shadow: 0 8px 16px var(--cor-sombra-leve);
+            position: relative;
+            /* Ensure it stays in flow */
+        }
+
+        .cadastro h1 {
+            text-align: center;
+            font-family: var(--fonte-titulo);
+            font-size: 3.5rem;
+            color: var(--cor-roxo-divertido);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.05);
+            animation: bounceIn 1s ease-out;
+        }
+
+        .cadastro input {
+            width: calc(100% - 20px);
+            /* Adjust width to account for padding/margin */
+            padding: 0.6rem;
+            border-radius: 20px;
+            border: 2px solid var(--cor-borda-elementos);
+            font-size: 0.8rem;
+            margin-bottom: 0.6rem;
+            font-weight: normal;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            margin-left: 10px;
+            margin-right: 10px;
+            /* Add right margin for consistency */
+        }
+
+        .cadastro input:focus {
+            border-color: var(--cor-primaria-acao);
+            box-shadow: 0 0 5px rgba(102, 204, 255, 0.5);
+            outline: none;
+        }
+
+        .cadastro label {
+            font-family: var(--fonte-titulo);
+            font-size: 1.5rem;
+            color: var(--cor-primaria-acao);
+            font-weight: 700;
+            margin: 0 auto 0.5rem 15px;
+            /* Adjust margin for labels */
+            line-height: 1.3;
+        }
+
+        .cadastro input[type="date"] {
+            font-weight: normal;
+        }
+
+        .orgDivs {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            /* Allow items to wrap on smaller screens */
+            gap: 1rem;
+            /* Space between the two input groups */
+            margin-bottom: 0.6rem;
+        }
+
+        .orgDivs input {
+            width: calc(100% - 20px);
+            /* Make inputs fill their parent div */
+            margin: 0;
+            /* Reset margins from general input rule */
+        }
+
+        .orgDivs div {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 48%;
+            /* Allows divs to grow/shrink, and wrap */
+            min-width: 250px;
+            /* Minimum width before wrapping */
+        }
+
+        .orgDivs div label {
+            margin-left: 5px;
+            /* Adjust label margin within orgDivs */
+        }
+
+        .cadastro button {
+            background-color: var(--cor-terciaria-acao);
+            color: var(--cor-texto-claro);
+            padding: 0.7rem 1.4rem;
+            border-radius: 20px;
+            border: none;
+            font-family: var(--fonte-corpo);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 1.5rem;
+            /* Space above the button */
+        }
+
+        .cadastro button:hover {
+            background-color: #FF7FAF;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .cadastro .links {
+            /* Ensure the "Já tem uma conta" link is centered */
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .cadastro a {
+            font-family: var(--fonte-corpo);
+            color: var(--cor-primaria-acao);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .cadastro a:hover {
+            color: var(--cor-roxo-divertido);
+        }
+
+
+        /* ===========
+         FOOTER 
+        ===========
+        */
+        footer {
+            background-color: var(--cor-grama-escura); /* Mesma cor da seção de ilhas */
+            color: var(--cor-texto-claro);
+            text-align: center;
+            padding: 3rem 5%; /* MAIOR PADDING */
+            font-size: 1.1rem; /* TEXTO MAIOR */
+            box-shadow: inset 0 6px 12px rgba(0,0,0,0.15); /* SOMBRA MAIS FORTE */
+            border-top-left-radius: 35px; /* MAIS ARREDONDADO */
+            border-top-right-radius: 35px; /* MAIS ARREDONDADO */
+            position: relative;
+            margin-top: 2rem; /* Adiciona margem superior para separar do main */
+        }
+
+        footer p {
+            margin-bottom: 1rem; /* Espaçamento abaixo do texto */
+        }
+
+        footer .links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem; /* MAIOR ESPAÇAMENTO */
+        }
+
+        footer .links a {
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.8rem 1rem; /* PADDING MAIOR PARA ÁREA CLICÁVEL */
+            font-weight: 700; /* MAIS NEGRITO */
+            border-radius: 15px; /* ARREDONDADO */
+            background-color: rgba(255,255,255,0.1); /* Fundo sutil */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        footer .links a:hover {
+            color: var(--cor-secundaria-acao);
+            transform: translateY(-3px) scale(1.05); /* MAIOR EFEITO DE HOVER */
+            background-color: rgba(255,255,255,0.2);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* ===========
+         MODAIS (TERMOS, PRIVACIDADE E AJUDA) 
+        ===========
+        */
+        .modal-overlay {
+            display: none; /* Oculto por padrão */
+            position: fixed; /* Fixado na tela */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente */
+            z-index: 1001; /* Acima de todo o conteúdo */
+            justify-content: center;
+            align-items: center;
+            opacity: 0; /* Começa invisível para transição */
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex; /* Exibe o overlay */
+            opacity: 1; /* Torna visível */
+        }
+
+            .modal-content {
+            /* Classe genérica para o conteúdo do modal */
+            background-color: var(--cor-nuvem); /* Fundo branco do modal */
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+
+            border-bottom-right-radius: 12px;
+            border-top-right-radius: 12px;
+            padding: 3.5rem;
+            max-width: 700px; /* Largura do modal */
+            width: 90%; /* Ajuste para telas menores */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform: translateY(20px); /* Começa um pouco abaixo para animação */
+            opacity: 0; /* Começa invisível para animação */
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            max-height: 80vh; /* Limita a altura do modal */
+            overflow-y: auto; /* Adiciona scroll se o conteúdo for maior que a altura */
+            text-align: left; /* Alinha o texto dentro do modal */
+            padding-right: 20px;
+        }
+
+        /* ===========
+         SCROLLBAR 
+        ===========
+        */
+        /* Customiza o scrollbar para navegadores WebKit (Chrome, Safari, Edge, Opera) */
+        ::-webkit-scrollbar {
+            width: 12px; /* Largura da barra de rolagem vertical */
+            height: 12px; /* Altura da barra de rolagem horizontal */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--cor-fundo-principal); /* Fundo da trilha do scrollbar */
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--cor-primaria-acao); /* Cor do "polegar" (draggable part) do scrollbar */
+            border-radius: 10px;
+            border: 3px solid var(--cor-fundo-principal); /* Adiciona uma borda ao polegar */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #33AADD; /* Cor mais escura no hover do polegar */
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: transparent; /* Canto onde as barras vertical e horizontal se encontram */
+        }
+        /* FIM DOS ESTILOS PARA O SCROLLBAR */
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0); /* Sobe para a posição final */
+            opacity: 1; /* Torna visível */
+        }
+
+        .modal-content h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.8rem;
+            color: var(--cor-roxo-divertido);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
+        }
+
+        .modal-content h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.8rem;
+            color: var(--cor-primaria-acao);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid var(--cor-borda-elementos);
+            padding-bottom: 0.5rem;
+        }
+
+        .modal-content p {
+            font-family: var(--fonte-corpo);
+            font-size: 1rem;
+            color: var(--cor-texto-escuro);
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--cor-texto-medio);
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease;
+            z-index: 10; /* Garante que o botão esteja acima do conteúdo do modal */
+        }
+
+        .close-button:hover {
+            color: var(--cor-terciaria-acao); /* Rosa */
+            transform: rotate(90deg);
+        }
+
+        /* Responsividade para o Modal */
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 2.5rem;
+                width: 95%;
+            }
+
+            .modal-content h2 {
+                font-size: 2.2rem;
+            }
+
+            .modal-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .modal-content p {
+                font-size: 0.9rem;
+            }
+
+            .close-button {
+                font-size: 1.8rem;
+                top: 15px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .modal-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .modal-content p {
+                font-size: 0.85rem;
+            }
+
+            .close-button {
+                font-size: 1.5rem;
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .hero-world h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-world p {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+        
+            .hero-world {
+                padding: 4rem 3% 6rem;
+            }
+
+            .hero-world h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-world p {
+                font-size: 1.1rem;
+            }
+
+            .cadastro {
+                padding: 1.5rem;
+            }
+
+            .cadastro h1 {
+                font-size: 2.5rem;
+            }
+
+            .cadastro label {
+                font-size: 1.2rem;
+                margin-left: 10px;
+            }
+
+            .cadastro input {
+                font-size: 0.9rem;
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+
+            .orgDivs div {
+                flex: 1 1 100%;
+                /* Stack password fields vertically on smaller screens */
+                min-width: unset;
+            }
+
+
+            footer {
+                padding: 2rem 3%;
+                font-size: 0.9rem;
+            }
+
+            footer .links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-world h1 {
+                font-size: 2.2rem;
+            }
+
+            .btn-join {
+                font-size: 1.1rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .cadastro {
+                padding: 1rem;
+                width: 95%;
+                /* Adjust width for very small screens */
+            }
+
+            .cadastro h1 {
+                font-size: 2rem;
+            }
+
+            .cadastro label {
+                font-size: 1rem;
+            }
+
+            .cadastro input {
+                font-size: 0.8rem;
+            }
+
+            .cadastro button {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .cadastro a {
+                font-size: 1rem;
+            }
+        }
+
+       img{
+            width: 80px; /* Logo um pouco maior */
+            height: auto; /* Mantém a proporção */
+            margin-right: 20px;
+        }
+
+        /* Estilo para mensagens de erro/sucesso */
+        .message-container {
+            padding: 15px 20px;
+            margin-bottom: 1.5rem; /* Mais espaço abaixo da mensagem */
+            border-radius: 15px; /* Bordas mais arredondadas */
+            font-family: var(--fonte-corpo);
+            font-weight: 600; /* Um pouco mais encorpado */
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra mais visível */
+            animation: fadeInDown 0.5s ease-out; /* Animação de entrada */
+            opacity: 0; /* Começa invisível para a animação */
+            transform: translateY(-20px); /* Começa acima para a animação */
+            display: none; /* Inicia oculto por padrão */
+        }
+
+        .message-container.active {
+            opacity: 1; /* Fica visível */
+            transform: translateY(0); /* Desce para a posição final */
+        }
+
+        /* Estilo para mensagens de ERRO */
+        .message-container.error {
+            background-color: #ffe6e6; /* Vermelho claro suave */
+            color: #cc0000; /* Vermelho escuro */
+            border: 2px solid #ff9999; /* Borda vermelha mais definida */
+        }
+
+        /* Estilo para mensagens de SUCESSO */
+        .message-container.success {
+            background-color: #e6ffe6; /* Verde claro suave */
+            color: #008000; /* Verde escuro */
+            border: 2px solid #99ff99; /* Borda verde mais definida */
+        }
+
+        /* Animação para a mensagem */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cloud small" style="top: 10%; left: -5%;"></div>
+    <div class="cloud medium" style="top: 20%; left: 30%;"></div>
+    <div class="cloud large" style="top: 15%; right: -5%;"></div>
+    <div class="cloud small" style="top: 30%; left: 10%;"></div>
+    <div class="cloud medium" style="top: 25%; right: 15%;"></div>
+
+    <header>
+        <img src="../imagens/logo.png" alt="Logo Calmamente">
+        <h1 class="logo">Calmamente</h1>
+        
+            <nav class="nav-links-container">
+            <a href="Home.html" class="nav-link" id="homeButton">
+                Home
+            </a>
+            <a href="SobreNos.html" class="nav-link" id="aboutUsLink">
+                Sobre Nós
+            </a>
+            <a href="Cadastro.html" class="nav-link" id="activitiesResourcesButton">
+                Atividades & Recursos
+            </a>
+            <a href="Cadastro.html" class="nav-link" id="contactButton">
+                Relatório
+            </a>    
+            </nav>
+
+        <nav class="nav-buttons">
+            <a href="Login.html" class="btn-header btn-highlight">Entrar</a>
+            <a href="Cadastro.html" class="btn-header">Cadastrar</a>
+        </nav>
+          
+    </header>
+
+    <main>
+        <form class="cadastro" action="./verUsuarios.jsp" method="POST">
+            <h1>Cadastro</h1>
+            
+            <div id="statusMessage" class="message-container"></div>
+
+            <label for="Usuario">Nome</label>
+            <input type="text" id="Usuario" name="Usuario" placeholder="Digite seu nome de usuário" required>
+
+            <label for="Email">Email</label>
+            <input type="email" id="Email" name="Email" placeholder="Digite seu email" required>
+
+            <div class="orgDivs">
+                <div>
+                    <label for="Senha">Senha</label>
+                    <input type="password" id="Senha" name="Senha" placeholder="Digite sua senha" required>
+                </div>
+                <div>
+                    <label for="ConfirmarSenha">Confirmar Senha</label>
+                    <input type="password" id="ConfirmarSenha" name="ConfirmarSenha" placeholder="Confirme sua senha"
+                        required>
+                </div>
+            </div>
+
+            <label for="DataNascimento">Data de Nascimento</label>
+            <input type="date" id="DataNascimento" name="DataNascimento" required>
+
+            <label for="Telefone">Telefone</label>
+            <input type="tel" id="Telefone" name="Telefone" placeholder="Digite seu telefone" required>
+
+            <button type="submit">Cadastrar</button>
+            <div class="links">
+                <a href="Login.html">Já tem uma conta? Faça login</a>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Calmamente. Todos os direitos reservados.</p>
+        <div class="links">
+            <a href="#" id="termsLink">Termos de Serviço</a>
+            <a href="#" id="privacyLink">Política de Privacidade</a>
+            <a href="#" id="helpLink">Ajuda</a>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2>Termos de Serviço</h2>
+            <h3>1. Aceitação dos Termos</h3>
+            <p>Ao acessar e utilizar o site Calmamente, você concorda em cumprir e estar vinculado a estes Termos de Uso. Se você não concorda com qualquer parte destes termos, por favor, não utilize nosso site.</p>
+            <h3>2. Uso do Conteúdo</h3>
+            <p>Todo o conteúdo fornecido neste site é apenas para fins informativos e educacionais. Não se destina a substituir aconselhamento profissional, diagnóstico ou tratamento. Sempre procure o conselho de um profissional de saúde qualificado para quaisquer perguntas que você possa ter sobre uma condição médica.</p>
+            <h3>3. Propriedade Intelectual</h3>
+            <p>Todo o conteúdo, design, gráficos, logotipos e outros materiais neste site são propriedade do Calmamente ou de seus licenciadores e são protegidos por leis de direitos autorais e marcas registradas. Você não pode reproduzir, distribuir, modificar ou criar trabalhos derivados de qualquer conteúdo sem permissão prévia por escrito.</p>
+            <h3>4. Conduta do Usuário</h3>
+            <p>Você concorda em usar o site de forma responsável e respeitosa. Não é permitido postar ou transmitir qualquer material que seja ilegal, difamatório, obsceno, ameaçador, invasivo da privacidade de terceiros, ou que possa constituir ou encorajar uma ofensa criminal, violar os direitos de qualquer parte ou que de outra forma dê origem a responsabilidade ou viole qualquer lei.</p>
+            <h3>5. Limitação de Responsabilidade</h3>
+            <p>O Calmamente não será responsável por quaisquer danos diretos, indiretos, incidentais, consequenciais ou punitivos decorrentes do seu acesso ou uso do site.</p>
+            <h3>6. Modificações dos Termos</h3>
+            <p>Reservamo-nos o direito de modificar estes Termos de Uso a qualquer momento. Quaisquer alterações serão efetivas imediatamente após a publicação no site. Seu uso continuado do site após a publicação de quaisquer alterações constitui sua aceitação dessas alterações.</p>
+            <h3>7. Lei Aplicável</h3>
+            <p>Estes Termos de Uso serão regidos e interpretados de acordo com as leis do Brasil.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2>Política de Privacidade</h2>
+            <h3>1. Coleta de Informações</h3>
+            <p>Coletamos informações que você nos fornece diretamente, como nome, endereço de e-mail e outras informações de contato quando você se registra, preenche um formulário ou interage com nossos serviços. Também podemos coletar automaticamente certas informações sobre seu dispositivo e uso do site, como endereço IP, tipo de navegador e páginas visitadas, por meio de cookies e tecnologias semelhantes.</p>
+            <h3>2. Uso das Informações</h3>
+            <p>Utilizamos as informações coletadas para: fornecer e melhorar nossos serviços; personalizar sua experiência no site; comunicar-nos com você sobre atualizações, promoções e informações relevantes; analisar o uso do site para otimizar o conteúdo e a funcionalidade; e garantir a segurança e a integridade de nossa plataforma.</p>
+            <h3>3. Compartilhamento de Informações</h3>
+            <p>Não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros, exceto nas seguintes circunstâncias: com seu consentimento explícito; para cumprir obrigações legais; para proteger nossos direitos, privacidade, segurança ou propriedade; ou com provedores de serviços que nos auxiliam na operação do site, desde que eles concordem em manter a confidencialidade de suas informações.</p>
+            <h3>4. Segurança dos Dados</h3>
+            <p>Implementamos medidas de segurança razoáveis para proteger suas informações contra acesso não autorizado, alteração, divulgação ou destruição. No entanto, nenhum método de transmissão pela internet ou armazenamento eletrônico é 100% seguro, e não podemos garantir segurança absoluta.</p>
+            <h3>5. Seus Direitos</h3>
+            <p>Você tem o direito de acessar, corrigir, atualizar ou solicitar a exclusão de suas informações pessoais a qualquer momento. Para exercer esses direitos, entre em contato conosco através dos canais fornecidos em nossa página de Contato.</p>
+            <h3>6. Cookies</h3>
+            <p>Nosso site utiliza cookies para melhorar sua experiência de navegação. Você pode configurar seu navegador para recusar todos ou alguns cookies, ou para alertá-lo quando os sites definirem ou acessarem cookies. No entanto, se você desativar ou recusar cookies, algumas partes do site podem se tornar inacessíveis ou não funcionar corretamente.</p>
+            <h3>7. Links para Terceiros</h3>
+            <p>Nosso site pode conter links para sites de terceiros. Não somos responsáveis pelas práticas de privacidade ou pelo conteúdo desses sites. Recomendamos que você revise as políticas de privacidade de qualquer site de terceiros que visitar.</p>
+            <h3>8. Alterações a Esta Política</h3>
+            <p>Podemos atualizar nossa Política de Privacidade periodicamente. Publicaremos quaisquer alterações nesta página e, se as alterações forem significativas, forneceremos um aviso mais proeminente. Recomendamos que você revise esta política regularmente para se manter informado sobre como protegemos suas informações.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="helpModal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2>Ajuda e Suporte</h2>
+            <h3>1. Como me Registro?</h3>
+            <p>Para se registrar, clique no ícone de perfil no canto superior direito do cabeçalho e siga as instruções para criar sua conta. É rápido e fácil!</p>
+            <h3>2. Onde Encontro as Atividades?</h3>
+            <p>Todas as nossas atividades e recursos estão na seção "Atividades & Recursos" no menu principal. Lá você encontrará ferramentas como o registro de emoções, artigos e muito mais.</p>
+            <h3>3. Como Posso Contribuir?</h3>
+            <p>Se você tem sugestões, ideias ou deseja colaborar, por favor, entre em contato conosco através da página "Contato". Adoramos receber feedback e novas parcerias!</p>
+            <h3>4. Problemas Técnicos?</h3>
+            <p>Se estiver enfrentando algum problema técnico com o site, por favor, descreva o ocorrido em detalhes na nossa página de "Contato" ou envie um e-mail para suporte@calmamente.com.br. Nossa equipe fará o possível para ajudar.</p>
+            <h3>5. Como Funciona o Fórum?</h3>
+            <p>Nosso fórum é um espaço seguro para compartilhar experiências, fazer perguntas e oferecer apoio. Para participar, basta se registrar e seguir as regras da comunidade. Você pode criar novos tópicos ou responder aos existentes.</p>
+            <h3>6. Posso Usar o Site no Celular?</h3>
+            <p>Sim! O site Calmamente é totalmente responsivo e foi projetado para funcionar perfeitamente em dispositivos móveis, tablets e computadores.</p>
+            <h3>7. Esqueci Minha Senha. O Que Faço?</h3>
+            <p>Na tela de login, clique em "Esqueci minha senha" e siga as instruções para redefinir. Um link será enviado para o seu e-mail cadastrado.</p>
+        </div>
+    </div>
+
+    <script>
+        // --- SCRIPT PARA OS MODAIS (TERMOS, PRIVACIDADE E AJUDA) ---
+
+        // Modal de Termos de Uso
+        const openTermsModalBtn = document.getElementById('termsLink');
+        const termsModalOverlay = document.getElementById('termsModal');
+        
+        if (openTermsModalBtn) {
+            openTermsModalBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                termsModalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        // Modal de Política de Privacidade
+        const openPrivacyModalBtn = document.getElementById('privacyLink');
+        const privacyModalOverlay = document.getElementById('privacyModal');
+
+        if (openPrivacyModalBtn) {
+            openPrivacyModalBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                privacyModalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        // Modal de Ajuda
+        const openHelpModalBtn = document.getElementById('helpLink');
+        const helpModalOverlay = document.getElementById('helpModal');
+
+        if (openHelpModalBtn) {
+            openHelpModalBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                helpModalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        // --- Botão Genérico de Fechar e Clique no Overlay para todos os Modais ---
+        // Seleciona todos os botões de fechar
+        const closeButtons = document.querySelectorAll('.modal-content .close-button');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                // Encontra o overlay modal pai e remove a classe 'active'
+                event.target.closest('.modal-overlay').classList.remove('active');
+                document.body.style.overflow = ''; // Restaura a rolagem do corpo
+            });
+        });
+
+        // Seleciona todos os overlays de modais para fechar ao clicar fora do conteúdo
+        const modalOverlays = document.querySelectorAll('.modal-overlay');
+        modalOverlays.forEach(overlay => {
+            overlay.addEventListener('click', (event) => {
+                if (event.target === overlay) {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+
+        // Fechar qualquer modal com a tecla ESC
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                modalOverlays.forEach(overlay => {
+                    if (overlay.classList.contains('active')) {
+                        overlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        });
+        const urlParams = new URLSearchParams(window.location.search);
+        const statusMessageDiv = document.getElementById('statusMessage'); // Alterado para statusMessage
+
+        if (urlParams.has('erro') && statusMessageDiv) {
+            const errorType = urlParams.get('erro');
+            let messageToDisplay = '';
+
+            switch (errorType) {
+                case 'email_existente':
+                    messageToDisplay = 'Este e-mail já está em uso. Por favor, utilize outro e-mail.';
+                    break;
+                case 'campos_vazios':
+                    messageToDisplay = 'Por favor, preencha todos os campos obrigatórios.';
+                    break;
+                case 'senhas_nao_coincidem':
+                    messageToDisplay = 'As senhas não coincidem. Por favor, verifique.';
+                    break;
+                case 'data_invalida':
+                    messageToDisplay = 'A data de nascimento é inválida. Use o formato AAAA-MM-DD.';
+                    break;
+                case 'erro_cadastro':
+                    messageToDisplay = 'Ocorreu um erro ao tentar cadastrar. Tente novamente.';
+                    break;
+                default:
+                    messageToDisplay = 'Ocorreu um erro desconhecido no cadastro.';
+            }
+            statusMessageDiv.textContent = messageToDisplay;
+            statusMessageDiv.classList.add('error'); // Adiciona a classe de erro
+            statusMessageDiv.style.display = 'block'; // Garante que é exibido
+            setTimeout(() => { // Adiciona um pequeno delay para a animação
+                statusMessageDiv.classList.add('active');
+            }, 10);
+
+        } else if (urlParams.has('cadastro_sucesso') && statusMessageDiv) {
+            if (urlParams.get('cadastro_sucesso') === '1') {
+                statusMessageDiv.textContent = 'Cadastro realizado com sucesso! Você já pode fazer login.';
+                statusMessageDiv.classList.add('success'); // Adiciona a classe de sucesso
+                statusMessageDiv.style.display = 'block'; // Garante que é exibido
+                setTimeout(() => { // Adiciona um pequeno delay para a animação
+                    statusMessageDiv.classList.add('active');
+                }, 10);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
