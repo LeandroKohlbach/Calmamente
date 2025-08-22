@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+header {
+	background-color: var(--cor-primaria-acao); /* Azul para o céu */
+	padding: 1rem 5%;
+	display: flex;
+	justify-content: space-between;
+	/* Espaço entre o primeiro e o último item */
+	align-items: center;
+	box-shadow: 0 4px 8px var(--cor-sombra-leve);
+	border-bottom-left-radius: 10px; /* MAIS ARREDONDADO */
+	border-bottom-right-radius: 10px; /* MAIS ARREDONDADO */
+	position: relative;
+	z-index: 1000;
+	max-height: 65px;
+	letter-spacing: 1px;
+}
+
+img {
+	width: 80px; /* Logo um pouco maior */
+	height: auto; /* Mantém a proporção */
+	margin-right: 20px;
+}
+.logo {
+	font-family: var(--fonte-titulo);
+	font-size: 2.5rem; /* UM POUCO MAIOR */
+	font-weight: 700;
+	color: var(--cor-texto-claro);
+	text-decoration: none;
+	text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15);
+	/* SOMBRA MAIS PROEMINENTE */
+	transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+.logo:hover {
+	transform: scale(1.02); /* MAIS BRINCALHÃO */
+	text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Contêiner para centralizar os links e botão de perfil */
+.header-center-container {
+	flex-grow: 1; /* Permite que ocupe o espaço central */
+	display: flex;
+	justify-content: center; /* Centraliza o conteúdo dentro dele */
+	align-items: center;
+}
+
+.nav-links-container {
+	display: flex;
+	align-items: center;
+	margin-left: 4%;
+	margin-right: auto;
+}
+/* Estilos para os links do cabeçalho (Home e Sobre Nós) */
+.nav-link {
+	text-decoration: none; /* Remove sublinhado */
+	color: var(--cor-texto-claro); /* Cor branca */
+	font-family: var(--fonte-titulo);
+	font-weight: 700;
+	transition: transform 0.2s ease, text-shadow 0.2s ease;
+	text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+	padding: 0.5rem 1rem; /* Adiciona padding para área clicável */
+	border-radius: 15px; /* Suavemente arredondado */
+	margin: 0 10px; /* Espaço entre os links */
+	font-size: 1.3rem; /* Tamanho padrão para todos os links */
+}
+
+.nav-link:hover {
+	transform: translateY(-3px); /* Efeito de hover */
+	text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+	background-color: rgba(255, 255, 255, 0.1); /* Fundo sutil no hover */
+}
+
+@media ( max-width : 768px) {
+	header {
+		flex-direction: row; /* Mantém em linha mas ajusta o espaçamento */
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem 3%;
+		border-bottom-left-radius: 25px;
+		border-bottom-right-radius: 25px;
+	}
+	.logo {
+		font-size: 2rem;
+		text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+	}
+
+	/* Ajuste para o container centralizado no mobile */
+	.header-center-container {
+		justify-content: center; /* Garante centralização */
+		flex-grow: 1; /* Permite ocupar o espaço */
+		margin: 0; /* Remove margens extras */
+		padding: 0;
+	}
+}
+
+@media ( max-width : 480px) {
+	.logo {
+		font-size: 1.6rem;
+	}
+	.nav-link {
+		font-size: 0.9rem;
+	}
+}
+
