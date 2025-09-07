@@ -10,7 +10,6 @@
     <title>Calmamente: Bem-vindo(a)!</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="./CSS/headerLogado.css">
     <style>
         /* VariÃ¡veis de Cores e Fontes - Mais VIBRANTES e LÃDICAS */
         :root {
@@ -115,7 +114,8 @@
 
             --fonte-titulo: 'Fredoka', sans-serif; /* Fonte mais arredondada e divertida */
             --fonte-corpo: 'Nunito', sans-serif; /* Fonte legÃ­vel e amigÃ¡vel */
-        }
+        }     
+        
         /* SeÃ§Ã£o Principal (Hero) - REMOVIDA */
         .hero-world {
             display: none; /* Esconde toda a seÃ§Ã£o Hero */
@@ -129,8 +129,8 @@
             border-radius: 40px; /* Bordas arredondadas para o container principal - MAIS ARREDONDADO */
             box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Sombra para destacÃ¡-lo - MAIS PROEMINENTE */
             position: relative;
-            width: 100%;
-            max-width: 1500px; /* Limita a largura para melhor visualizaÃ§Ã£o */
+            width: 80%;
+            max-width: 100%; /* Limita a largura para melhor visualizaÃ§Ã£o */
             margin: 0 auto; /* Centraliza */
             /* ADICIONADO: Borda colorida para um visual mais divertido */
             border: 4px solid var(--cor-grama-escura);
@@ -166,7 +166,7 @@
             border-radius: 35px; /* MAIS ARREDONDADO */
             padding: 3rem; /* MAIOR PADDING */
             width: calc(33% - 3rem); /* Permite 3 cards por linha com gap */
-            max-width: 320px; /* Limita o tamanho mÃ¡ximo de cada card */
+            max-width: 250px; /* Limita o tamanho mÃ¡ximo de cada card */
             box-shadow: 0 10px 20px var(--cor-sombra-leve); /* SOMBRA MAIS FORTE */
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -483,7 +483,6 @@
         }
 
         @media (max-width: 768px) {
-            
 
             .adventure-islands {
                 padding: 3rem 3%;
@@ -550,40 +549,6 @@
             .island-card p {
                 font-size: 1rem;
             }
-            .logo {
-                font-size: 1.6rem;
-            }
-            .user-profile-button {
-                width: 40px;
-                height: 40px;
-                font-size: 1.4rem;
-            }
-            .dropdown-content {
-                min-width: 180px;
-                top: calc(100% + 10px);
-                right: 0;
-                font-size: 0.9rem;
-            }
-            .dropdown-content .user-info {
-                font-size: 1rem;
-            }
-            .dropdown-content a {
-                font-size: 0.95rem;
-            }
-            .dropdown-content a i {
-                font-size: 1.1rem;
-            }
-            /* NOVO: Responsividade para os links do cabeÃ§alho */
-            .nav-link {
-                font-size: 0.9rem;
-            }
-            .nav-link.home {
-                font-size: 0.9rem;
-            }
-            .nav-link.about-us {
-                font-size: 0.9rem;
-            }
-            /* FIM DO NOVO */
             .island-card .icon-wrapper {
                 width: 70px;
                 height: 70px;
@@ -661,47 +626,7 @@
 </head>
 <body>
 
-    <header>
-        <img src="./imagens/logo.png" alt="">
-        <h1 class="logo">Calmamente</h1>
-
-            <nav class="nav-links-container">
-            <a href="HomeLogado.jsp" class="nav-link" id="homeButton">
-                Home
-            </a>
-            <a href="SobreNosLogado.jsp" class="nav-link" id="aboutUsLink">
-                Sobre Nós
-            </a>
-            <a href="Atividades&Recursos.jsp" class="nav-link" id="activitiesResourcesButton">
-                Atividades & Recursos
-            </a>
-            <a href="./Historico/historicov1.jsp" class="nav-link" id="contactButton">
-                Relatório
-            </a>    
-            </nav>
-
-        <div class="user-nav">
-        <button class="user-profile-button" id="userProfileBtn">
-            <i class="fas fa-user-circle"></i>
-        </button>
-        <div class="dropdown-content" id="userDropdown">
-            <div class="user-info">
-                Olá, <strong>
-                <%
-					 Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioObjeto");
- 					String userName = usuarioLogado.getNome();
- 					if (userName == null || userName.isEmpty()) {
- 						userName = "Usuário";
- 					}
- 					out.print(userName);
-                %>                
-                </strong>!
-            </div>
-            <a href="#editar-perfil"><i class="fas fa-pencil-alt"></i> Editar Perfil</a>
-            <a href="#sair"><i class="fas fa-sign-out-alt"></i> Sair</a>
-        </div>
-        </div>
-    </header>
+    <jsp:include page="./JSPs/headerLogado.jsp" />
 
     <main>
         <section class="adventure-islands" id="adventure-islands">

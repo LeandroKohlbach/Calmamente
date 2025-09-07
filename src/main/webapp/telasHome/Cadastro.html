@@ -9,6 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/header.css">
     <style>
         /* Variáveis de Cores e Fontes - Mais VIBRANTES e LÚDICAS */
         :root {
@@ -67,7 +68,7 @@
             color: var(--cor-texto-escuro);
             line-height: 1.6;
             overflow-x: hidden;
-            /* **Mantido aqui para controle global** */
+            /* *Mantido aqui para controle global* */
             background-image: linear-gradient(to bottom, var(--cor-fundo-principal), var(--cor-grama-clara));
             /* Degradê suave de céu para terra */
             min-height: 100vh;
@@ -155,107 +156,7 @@
          HEADER 
         ===========
         */
-       header {
-        background-color: var(--cor-primaria-acao); /* Azul para o céu */
-        padding: 1rem 5%;
-        display: flex;
-        justify-content: space-between; /* Espaço entre o primeiro e o último item */
-        align-items: center;
-         box-shadow: 0 4px 8px var(--cor-sombra-leve);
-        border-bottom-left-radius: 10px; /* MAIS ARREDONDADO */
-        border-bottom-right-radius: 10px; /* MAIS ARREDONDADO */
-        position: relative;
-        z-index: 1000;
-        max-height: 65px;
-}
-
-        .logo {
-            font-family: var(--fonte-titulo);
-            font-size: 2.5rem; /* UM POUCO MAIOR */
-            font-weight: 700;
-            color: var(--cor-texto-claro);
-            text-decoration: none;
-            text-shadow: 3px 3px 0 rgba(0,0,0,0.15); /* SOMBRA MAIS PROEMINENTE */
-            transition: transform 0.2s ease, text-shadow 0.2s ease;
-        }
-        .logo:hover {
-            transform: scale(1.02); /* MAIS BRINCALHÃO */
-            text-shadow: 4px 4px 0 rgba(0,0,0,0.2);
-        }
-        
-        /* Contêiner para centralizar os links e botão de perfil */
-        .header-center-container {
-            flex-grow: 1; /* Permite que ocupe o espaço central */
-            display: flex;
-            justify-content: center; /* Centraliza o conteúdo dentro dele */
-            align-items: center;
-        }
-        .nav-links-container {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        /* Estilos para os links do cabeçalho (Home e Sobre Nós) */
-        .nav-link {
-            text-decoration: none; /* Remove sublinhado */
-            color: var(--cor-texto-claro); /* Cor branca */
-            font-family: var(--fonte-titulo);
-            font-weight: 700;
-            transition: transform 0.2s ease, text-shadow 0.2s ease;
-            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
-            padding: 0.5rem 1rem; /* Adiciona padding para área clicável */
-            border-radius: 15px; /* Suavemente arredondado */
-            margin: 0 10px; /* Espaço entre os links */
-            font-size: 1.3rem; /* Tamanho padrão para todos os links */
-        }
-
-        .nav-link:hover {
-            transform: translateY(-3px); /* Efeito de hover */
-            text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
-            background-color: rgba(255, 255, 255, 0.1); /* Fundo sutil no hover */
-        }
-
-        .btn-header {
-            font-family: var(--fonte-corpo);
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--cor-texto-claro);
-            padding: 0.6rem 1.2rem;
-            border: 2px solid var(--cor-texto-claro);
-            border-radius: 25px;
-            text-decoration: none;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-            white-space: nowrap; /* Evita que o texto quebre em várias linhas */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .btn-header:hover {
-            background-color: var(--cor-texto-claro);
-            color: var(--cor-primaria-acao);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        
-        .btn-header.btn-highlight {
-            background-color: var(--cor-secundaria-acao); /* Amarelo */
-            color: var(--cor-texto-escuro);
-            border-color: var(--cor-secundaria-acao);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-            .btn-header.btn-highlight:hover {
-            background-color: #FFC107; /* Amarelo um pouco mais escuro */
-            border-color: #FFC107;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        } 
-
-        .nav-buttons {
-            display: flex;
-            align-items: center;
-            gap: 15px; /* Espaço entre os botões */
-        }
-
+       
         @keyframes bounceIn {
 
             0%,
@@ -666,30 +567,7 @@
         }
 
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 1rem 3%;
-            }
-
-            .logo {
-                margin-bottom: 0.8rem;
-                font-size: 1.8rem;
-            }
-
-            .nav-buttons {
-                width: 100%;
-                display: flex;
-                justify-content: space-around;
-            }
-
-            .nav-buttons button {
-                flex: 1;
-                margin: 0 0.4rem;
-                padding: 0.6rem 1rem;
-                font-size: 0.9rem;
-            }
-
+        
             .hero-world {
                 padding: 4rem 3% 6rem;
             }
@@ -847,7 +725,7 @@
             <a href="Home.html" class="nav-link" id="homeButton">
                 Home
             </a>
-            <a href="sobreNos.html" class="nav-link" id="aboutUsLink">
+            <a href="SobreNos.html" class="nav-link" id="aboutUsLink">
                 Sobre Nós
             </a>
             <a href="Cadastro.html" class="nav-link" id="activitiesResourcesButton">

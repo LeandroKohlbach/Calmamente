@@ -6,37 +6,32 @@
     <title>Calmamente: Seu Mundo de Emoções!</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
+    <link rel="stylesheet" href="header.css">
+     <style>
         /* Variáveis de Cores e Fontes - Mais VIBRANTES e LÚDICAS */
         :root {
             --cor-fundo-principal: #E0F7FA; /* Azul Céu Bem Leve */
             --cor-nuvem: #FFFFFF; /* Branco Nuvem */
             --cor-grama-clara: #DCE8CC; /* Verde Menta Claro */
             --cor-grama-escura: #A8D8B9; /* Verde Pastel Vibrante */
-
             --cor-primaria-acao: #66CCFF; /* Azul Brilhante */
             --cor-secundaria-acao: #FFD700; /* Amarelo Sol */
             --cor-terciaria-acao: #FF99CC; /* Rosa Chiclete */
             --cor-roxo-divertido: #B388FF; /* Roxo Claro */
-
             --cor-texto-escuro: #333333; /* Cinza Escuro */
             --cor-texto-medio: #555555; /* Cinza Médio */
             --cor-texto-claro: #FFFFFF; /* Branco */
-
             --cor-sombra-leve: rgba(0, 0, 0, 0.1);
             --cor-borda-elementos: rgba(0, 0, 0, 0.15); /* Bordas suaves para elementos */
-
             --fonte-titulo: 'Fredoka', sans-serif; /* Fonte mais arredondada e divertida */
             --fonte-corpo: 'Nunito', sans-serif; /* Fonte legível e amigável */
         }
-
         /* Reset Básico */
         body, h1, h2, h3, p, ul, li, button {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: var(--fonte-corpo);
             background-color: var(--cor-fundo-principal);
@@ -48,7 +43,6 @@
             display: flex;
             flex-direction: column;
         }
-
         main {
             flex-grow: 1; /* Faz o main ocupar o espaço restante */
             display: flex; /* Adicionado para centralizar o conteúdo do main */
@@ -56,7 +50,6 @@
             align-items: center; /* Centraliza verticalmente */
             padding: 2rem 0; /* Adicionado um pouco de padding vertical */
         }
-
         /* Estilo para as nuvens (elementos decorativos) */
         .cloud {
             position: absolute;
@@ -73,118 +66,10 @@
         .cloud:nth-child(3) { animation-delay: -20s; }
         .cloud:nth-child(4) { animation-delay: -5s; left: -20%; }
         .cloud:nth-child(5) { animation-delay: -15s; top: 20%; right: -15%; animation-duration: 30s;}
-
         @keyframes moveCloud {
             0% { transform: translateX(-100vw); }
             100% { transform: translateX(100vw); } /* Ajustado para mover completamente para fora da tela */
         }
-
-        /* ===========
-         HEADER 
-        ===========
-        */
-       header {
-        background-color: var(--cor-primaria-acao); /* Azul para o céu */
-        padding: 1rem 5%;
-        display: flex;
-        justify-content: space-between; /* Espaço entre o primeiro e o último item */
-        align-items: center;
-         box-shadow: 0 4px 8px var(--cor-sombra-leve);
-        border-bottom-left-radius: 10px; /* MAIS ARREDONDADO */
-        border-bottom-right-radius: 10px; /* MAIS ARREDONDADO */
-        position: relative;
-        z-index: 1000;
-        max-height: 65px;
-}
-
-        .logo {
-            font-family: var(--fonte-titulo);
-            font-size: 2.5rem; /* UM POUCO MAIOR */
-            font-weight: 700;
-            color: var(--cor-texto-claro);
-            text-decoration: none;
-            text-shadow: 3px 3px 0 rgba(0,0,0,0.15); /* SOMBRA MAIS PROEMINENTE */
-            transition: transform 0.2s ease, text-shadow 0.2s ease;
-        }
-        .logo:hover {
-            transform: scale(1.02); /* MAIS BRINCALHÃO */
-            text-shadow: 4px 4px 0 rgba(0,0,0,0.2);
-        }
-        
-        /* Contêiner para centralizar os links e botão de perfil */
-        .header-center-container {
-            flex-grow: 1; /* Permite que ocupe o espaço central */
-            display: flex;
-            justify-content: center; /* Centraliza o conteúdo dentro dele */
-            align-items: center;
-        }
-        .nav-links-container {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        /* Estilos para os links do cabeçalho (Home e Sobre Nós) */
-        .nav-link {
-            text-decoration: none; /* Remove sublinhado */
-            color: var(--cor-texto-claro); /* Cor branca */
-            font-family: var(--fonte-titulo);
-            font-weight: 700;
-            transition: transform 0.2s ease, text-shadow 0.2s ease;
-            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
-            padding: 0.5rem 1rem; /* Adiciona padding para área clicável */
-            border-radius: 15px; /* Suavemente arredondado */
-            margin: 0 10px; /* Espaço entre os links */
-            font-size: 1.3rem; /* Tamanho padrão para todos os links */
-        }
-
-        .nav-link:hover {
-            transform: translateY(-3px); /* Efeito de hover */
-            text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
-            background-color: rgba(255, 255, 255, 0.1); /* Fundo sutil no hover */
-        }
-
-        .btn-header {
-            font-family: var(--fonte-corpo);
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--cor-texto-claro);
-            padding: 0.6rem 1.2rem;
-            border: 2px solid var(--cor-texto-claro);
-            border-radius: 25px;
-            text-decoration: none;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-            white-space: nowrap; /* Evita que o texto quebre em várias linhas */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .btn-header:hover {
-            background-color: var(--cor-texto-claro);
-            color: var(--cor-primaria-acao);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        
-        .btn-header.btn-highlight {
-            background-color: var(--cor-secundaria-acao); /* Amarelo */
-            color: var(--cor-texto-escuro);
-            border-color: var(--cor-secundaria-acao);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-            .btn-header.btn-highlight:hover {
-            background-color: #FFC107; /* Amarelo um pouco mais escuro */
-            border-color: #FFC107;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        } 
-
-        .nav-buttons {
-            display: flex;
-            align-items: center;
-            gap: 15px; /* Espaço entre os botões */
-        }
-        /*FIM DO HEADER*/
-
         /* ===========
          SCROLLBAR 
         ===========
@@ -194,27 +79,22 @@
             width: 12px; /* Largura da barra de rolagem vertical */
             height: 12px; /* Altura da barra de rolagem horizontal */
         }
-
         ::-webkit-scrollbar-track {
             background: var(--cor-fundo-principal); /* Fundo da trilha do scrollbar */
             border-radius: 10px;
         }
-
         ::-webkit-scrollbar-thumb {
             background: var(--cor-primaria-acao); /* Cor do "polegar" (draggable part) do scrollbar */
             border-radius: 10px;
             border: 3px solid var(--cor-fundo-principal); /* Adiciona uma borda ao polegar */
         }
-
         ::-webkit-scrollbar-thumb:hover {
             background: #33AADD; /* Cor mais escura no hover do polegar */
         }
-
         ::-webkit-scrollbar-corner {
             background: transparent; /* Canto onde as barras vertical e horizontal se encontram */
         }
         /* FIM DOS ESTILOS PARA O SCROLLBAR */
-
         /* Seção Principal (Hero) - Mundo de Descobertas */
         .hero-world {
             position: relative;
@@ -228,7 +108,6 @@
             justify-content: center; /* Centers content vertically */
             align-items: center; /* Centers content horizontally */
         }
-
         .hero-content {
             position: relative;
             z-index: 1; /* Garante que o conteúdo fique acima das nuvens */
@@ -237,7 +116,6 @@
             flex-direction: column; /* Stack children vertically */
             align-items: center; /* Center children horizontally */
         }
-
         /* Estilo para o botão de login */
         .login-form-button { /* Nova classe para o botão de login específico */
             background-color: var(--cor-terciaria-acao); /* Rosa Chiclete - Era a cor original do seu botão*/
@@ -252,13 +130,11 @@
             box-shadow: 0 3px 6px rgba(0,0,0,0.2);
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
-
         .login-form-button:hover {
             background-color: #FF7FAF; /* Rosa Chiclete mais escuro */
             transform: translateY(-2px);
             box-shadow: 0 5px 10px rgba(0,0,0,0.25);
         }
-
         .caixa-input { /* Nova classe para envolver o input e o ícone */
             position: relative;
             width: 100%; /* Ocupa 100% da largura disponível do pai */
@@ -275,7 +151,6 @@
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-
         .caixa-input .icon {
             position: absolute;
             left: 0.8rem; /* Posição do ícone dentro do input */
@@ -284,7 +159,6 @@
             color: var(--cor-texto-medio); /* Cor do ícone */
             font-size: 1rem; /* Tamanho do ícone */
         }
-
         .caixa-login {
             margin-bottom: 1.5rem;
             text-align: left; /* Alinha o texto do label à esquerda */
@@ -302,7 +176,6 @@
             width: 100%; /* Ocupa 100% para alinhamento */
             max-width: 400px; /* Mesma largura máxima do input */
         }
-
         .hero-world h1 {
             font-family: var(--fonte-titulo);
             font-size: 4rem;
@@ -321,7 +194,6 @@
             text-shadow: 3px 3px 0px rgba(0,0,0,0.05);
             animation: bounceIn 1s ease-out; /* Animação de entrada */
         }
-
         .hero-world p {
             font-family: var(--fonte-corpo);
             font-size: 1.25rem;
@@ -349,7 +221,6 @@
         .login p {
             margin-bottom: 2rem; /* Adiciona mais margem abaixo do parágrafo */
         }
-
         .login-btn-wrapper { /* Novo wrapper para o botão e o link */
             display: flex;
             flex-direction: column; /* Altera para coluna para o botão e o link ficarem um abaixo do outro */
@@ -357,7 +228,6 @@
             gap: 0.8rem; /* Espaçamento entre o botão e o link */
             margin-top: 1.5rem; /* Espaço acima do wrapper */
         }
-
         .login-link { /* Estilo específico para o link "Cadastrar-se" */
             font-family: var(--fonte-corpo);
             color: var(--cor-primaria-acao); /* Cor do link */
@@ -368,8 +238,6 @@
         .login-link:hover {
             color: var(--cor-roxo-divertido); /* Cor do link ao passar o mouse */
         }
-
-
         @keyframes bounceIn {
             0%, 20%, 40%, 60%, 80%, 100% {
                 animation-timing-function: cubic-bezier(0.215, .61, .355, 1);
@@ -396,7 +264,6 @@
                 transform: scale3d(1, 1, 1);
             }
         }
-
         /* ===========
          FOOTER 
         ===========
@@ -413,18 +280,15 @@
             position: relative;
             margin-top: 2rem; /* Adiciona margem superior para separar do main */
         }
-
         footer p {
             margin-bottom: 1rem; /* Espaçamento abaixo do texto */
         }
-
         footer .links {
             margin-top: 1.5rem;
             display: flex;
             justify-content: center;
             gap: 2rem; /* MAIOR ESPAÇAMENTO */
         }
-
         footer .links a {
             color: var(--cor-texto-claro);
             text-decoration: none;
@@ -435,14 +299,12 @@
             background-color: rgba(255,255,255,0.1); /* Fundo sutil */
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-
         footer .links a:hover {
             color: var(--cor-secundaria-acao);
             transform: translateY(-3px) scale(1.05); /* MAIOR EFEITO DE HOVER */
             background-color: rgba(255,255,255,0.2);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-
         /* ===========
          MODAIS (TERMOS, PRIVACIDADE E AJUDA) 
         ===========
@@ -461,18 +323,15 @@
             opacity: 0; /* Começa invisível para transição */
             transition: opacity 0.3s ease;
         }
-
         .modal-overlay.active {
             display: flex; /* Exibe o overlay */
             opacity: 1; /* Torna visível */
         }
-
             .modal-content {
             /* Classe genérica para o conteúdo do modal */
             background-color: var(--cor-nuvem); /* Fundo branco do modal */
             border-top-left-radius: 30px;
             border-bottom-left-radius: 30px;
-
             border-bottom-right-radius: 12px;
             border-top-right-radius: 12px;
             padding: 3.5rem;
@@ -488,12 +347,10 @@
             text-align: left; /* Alinha o texto dentro do modal */
             padding-right: 20px;
         }
-
         .modal-overlay.active .modal-content {
             transform: translateY(0); /* Sobe para a posição final */
             opacity: 1; /* Torna visível */
         }
-
         .modal-content h2 {
             font-family: var(--fonte-titulo);
             font-size: 2.8rem;
@@ -502,7 +359,6 @@
             text-align: center;
             text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
         }
-
         .modal-content h3 {
             font-family: var(--fonte-titulo);
             font-size: 1.8rem;
@@ -512,7 +368,6 @@
             border-bottom: 1px solid var(--cor-borda-elementos);
             padding-bottom: 0.5rem;
         }
-
         .modal-content p {
             font-family: var(--fonte-corpo);
             font-size: 1rem;
@@ -520,7 +375,6 @@
             margin-bottom: 0.8rem;
             line-height: 1.7;
         }
-
         .close-button {
             position: absolute;
             top: 20px;
@@ -533,126 +387,59 @@
             transition: color 0.2s ease, transform 0.2s ease;
             z-index: 10; /* Garante que o botão esteja acima do conteúdo do modal */
         }
-
         .close-button:hover {
             color: var(--cor-terciaria-acao); /* Rosa */
             transform: rotate(90deg);
         }
-
-        /* Responsividade para o Modal */
+        img{
+            width: 80px; /* Logo um pouco maior */
+            height: auto; /* Mantém a proporção */
+            margin-right: 20px;
+        }
+        /* ===========
+         RESPONSIVIDADE (APENAS LAYOUT)
+        =========== */
         @media (max-width: 768px) {
-            .modal-content {
-                padding: 2.5rem;
-                width: 95%;
-            }
-
-            .modal-content h2 {
-                font-size: 2.2rem;
-            }
-
-            .modal-content h3 {
-                font-size: 1.5rem;
-            }
-
-            .modal-content p {
-                font-size: 0.9rem;
-            }
-
-            .close-button {
-                font-size: 1.8rem;
-                top: 15px;
-                right: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .modal-content {
-                padding: 1.5rem;
-            }
-
-            .modal-content h2 {
-                font-size: 1.8rem;
-            }
-
-            .modal-content h3 {
-                font-size: 1.3rem;
-            }
-
-            .modal-content p {
-                font-size: 0.85rem;
-            }
-
-            .close-button {
-                font-size: 1.5rem;
-                top: 10px;
-                right: 10px;
-            }
-        }
-
-
-        /* Responsividade */
-
-        /* Para telas de até 1024px (tablets em modo paisagem, desktops menores) */
-        @media (max-width: 1024px) {
-            .hero-world h1 {
-                font-size: 3.5rem;
-            }
-            .hero-world p {
-                font-size: 1.3rem;
-            }
-            .login {
-                padding: 2.5rem;
-                width: 90%;
-            }
-        }
-
-        /* Para telas de até 768px (tablets em modo retrato, smartphones maiores) */
-        @media (max-width: 768px) {
+            /* Cabeçalho */
             header {
                 flex-direction: column;
                 align-items: center;
-                padding: 1rem 3%;
-                gap: 15px;
+                gap: 1rem;
+                padding-bottom: 1rem;
             }
-            .logo {
-                margin-bottom: 0.8rem;
-                font-size: 1.8rem;
+            header img {
+                width: 60px;
+                margin: 0;
             }
-            .nav-buttons {
-                width: 100%;
-                display: flex;
+            .nav-buttons,
+            .nav-links-container {
                 justify-content: center;
-                gap: 10px;
+                flex-wrap: wrap;
+                width: 100%;
+                gap: 0.5rem;
             }
             .btn-header {
-                font-size: 1rem;
-                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
             }
-
-            .hero-world {
-                padding: 4rem 3% 6rem;
-            }
-            .hero-world h1 {
-                font-size: 2.8rem;
-            }
-            .hero-world p {
-                font-size: 1.1rem;
-            }
+            /* Formulário de Login */
             .login {
-                padding: 2rem;
+                padding: 2.5rem 1.5rem;
                 width: 95%;
             }
-            /* AJUSTE PARA CAIXA DE INPUT E LABEL */
             .caixa-input {
-                max-width: 350px; /* Reduz a largura máxima do input */
+                max-width: 100%;
             }
             .caixa-login h2 {
-                text-align: center; /* Centraliza o título do campo para que ele se alinhe com o input centralizado */
-                max-width: 350px; /* Garante que o título não seja mais largo que o input */
+                text-align: center;
+                max-width: 100%;
             }
             .login-btn-wrapper {
                 flex-direction: column;
+                gap: 0.6rem;
+                width: 100%;
             }
+            /* Rodapé */
             footer {
                 padding: 2rem 3%;
                 font-size: 0.9rem;
@@ -661,181 +448,97 @@
                 flex-direction: column;
                 gap: 0.5rem;
             }
-        }
-
-        /* Para telas de até 480px (smartphones menores e a maioria dos celulares) */
-        @media (max-width: 480px) {
-            .hero-world h1 {
-                font-size: 2.2rem;
-            }
-            .login {
-                padding: 1.5rem;
+            /* Modais */
+            .modal-content {
+                padding: 2rem 1rem;
                 width: 95%;
             }
-            .btn-header {
-                font-size: 0.85rem;
-                padding: 0.4rem 0.8rem;
+            .close-button {
+                font-size: 1.8rem;
+                top: 15px;
+                right: 15px;
             }
+        }
+        @media (max-width: 480px) {
+            /* Cabeçalho */
             .nav-buttons {
-                gap: 6px;
-                flex-wrap: wrap; /* Permite que os botões quebrem a linha se não houver espaço */
-                justify-content: center;
+                flex-direction: column;
             }
-            /* AJUSTE PARA CAIXA DE INPUT E LABEL */
-            .caixa-login h2 {
-                font-size: 1rem;
-                max-width: 300px; /* Reduz a largura máxima do título */
+            .btn-header {
+                width: 100%;
+                text-align: center;
+                padding: 0.6rem;
             }
-            .caixa-input {
-                max-width: 300px; /* Reduz a largura máxima do input */
+            /* Formulário de Login */
+            .login {
+                padding: 1.5rem;
             }
             .caixa-input input {
-                font-size: 0.9rem;
                 padding: 0.6rem;
                 padding-left: 2rem;
             }
             .caixa-input .icon {
-                font-size: 0.9rem;
                 left: 0.6rem;
             }
-            /* Ajuste a animação da nuvem para garantir que ela saia totalmente da tela em dispositivos menores */
-            @keyframes moveCloud {
-                0% { transform: translateX(-150vw); }
-                100% { transform: translateX(150vw); }
-            }
         }
-
-        /* NOVO: Para telas menores que 375px (ex: iPhone SE, modelos mais antigos) */
-        @media (max-width: 375px) {
-            .logo {
-                font-size: 1.7rem;
+        @media (max-width: 400px) {
+            /* Cabeçalho */
+            header {
+                padding: 1rem;
+                gap: 0.5rem;
+            }
+            .nav-links-container, .nav-buttons {
+                gap: 0.3rem;
             }
             .btn-header {
-                font-size: 0.8rem;
-                padding: 0.35rem 0.7rem;
+                padding: 0.5rem 0.8rem;
             }
-            .hero-world h1 {
-                font-size: 2rem;
-            }
-            .hero-world p {
-                font-size: 1rem;
-            }
+            /* Formulário de Login */
             .login {
-                padding: 1.2rem; /* Reduz o padding do formulário de login */
-                width: 98%; /* Ocupa quase toda a largura para evitar scroll horizontal */
-            }
-            /* AJUSTE PARA CAIXA DE INPUT E LABEL */
-            .caixa-login h2 {
-                font-size: 0.95rem; /* Ajusta o tamanho do título do campo */
-                max-width: 280px; /* Mais redução para o título */
-            }
-            .caixa-input {
-                max-width: 280px; /* Mais redução para a largura do input */
+                padding: 1.2rem;
             }
             .caixa-input input {
-                font-size: 0.85rem; /* Ajusta o tamanho da fonte do input */
+                font-size: 0.9rem;
                 padding: 0.5rem;
                 padding-left: 1.8rem;
             }
             .caixa-input .icon {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
                 left: 0.5rem;
             }
-            .login-form-button {
-                font-size: 0.9rem;
-                padding: 0.6rem 1.2rem;
-            }
             .login-link {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
+            /* Rodapé */
             footer {
                 padding: 1.5rem 2%;
-                font-size: 0.8rem;
             }
             footer .links {
                 gap: 0.3rem;
             }
-        }
-
-        /* NOVO: Para telas menores que 320px (dispositivos muito antigos ou específicos) */
-        @media (max-width: 320px) {
-            .logo {
+            /* Modais */
+            .modal-content {
+                padding: 1.5rem;
+            }
+            .close-button {
                 font-size: 1.5rem;
-            }
-            .btn-header {
-                font-size: 0.75rem;
-                padding: 0.3rem 0.5rem;
-            }
-            .nav-buttons {
-                flex-direction: column; /* Força os botões do cabeçalho a empilharem */
-                gap: 5px;
-            }
-            .hero-world h1 {
-                font-size: 1.6rem;
-                margin-bottom: 1rem;
-            }
-            .hero-world p {
-                font-size: 0.9rem;
-                margin-bottom: 1.5rem;
-            }
-            .login {
-                padding: 1rem;
-                border-radius: 20px; /* Borda um pouco menor para espaços apertados */
-            }
-            .login h1 {
-                font-size: 1.5rem;
-            }
-            .login p {
-                font-size: 0.9rem;
-            }
-            /* AJUSTE PARA CAIXA DE INPUT E LABEL */
-            .caixa-login h2 {
-                font-size: 0.9rem;
-                max-width: 250px; /* Mais redução para o título */
-            }
-            .caixa-input {
-                max-width: 250px; /* Mais redução para a largura do input */
-            }
-            .caixa-input input {
-                font-size: 0.8rem;
-                padding: 0.4rem;
-                padding-left: 1.6rem;
-            }
-            .caixa-input .icon {
-                font-size: 0.8rem;
-                left: 0.4rem;
-            }
-            .login-form-button {
-                font-size: 0.85rem;
-                padding: 0.5rem 1rem;
-            }
-            .login-link {
-                font-size: 0.85rem;
+                top: 10px;
+                right: 10px;
             }
         }
-        img{
-            width: 80px; /* Logo um pouco maior */
-            height: auto; /* Mantém a proporção */
-            margin-right: 20px;
-        }
-
-
     </style>
 </head>
 <body>
-
     <div class="cloud small" style="top: 10%; left: -5%;"></div>
     <div class="cloud medium" style="top: 20%; left: 30%;"></div>
     <div class="cloud large" style="top: 15%; right: -5%;"></div>
     <div class="cloud small" style="top: 30%; left: 10%;"></div>
     <div class="cloud medium" style="top: 25%; right: 15%;"></div>
-
     
     <header>
         <img src="../imagens/logo.png" alt="Logo Calmamente">
         <h1 class="logo">Calmamente</h1>
-        
-            <nav class="nav-links-container">
+        <nav class="nav-links-container">
             <a href="Home.html" class="nav-link" id="homeButton">
                 Home
             </a>
@@ -848,22 +551,18 @@
             <a href="Login.html" class="nav-link" id="contactButton">
                 Relatório
             </a>    
-            </nav>
-
+        </nav>
         <nav class="nav-buttons">
             <a href="Login.html" class="btn-header btn-highlight">Entrar</a>
             <a href="Cadastro.html" class="btn-header">Cadastrar</a>
         </nav>
-          
     </header>
-
     <main>
         <section class="hero-world">
             <div class="hero-content">
                 <form class="login" action="./Login.jsp" method="POST">
                     <h1>Log in</h1>
                     <p>Bem-vindo(a) de volta ao Calmamente! Entre com sua conta para continuar sua jornada de descobertas e aventuras emocionais.</p>
-
                     <div class="caixa-login">
                         <h2>Informe seu Email</h2>
                         <div class="caixa-input">
@@ -871,7 +570,6 @@
                             <input type="email" placeholder="Email" id="email" name="email">
                         </div>
                     </div>
-
                     <div class="caixa-login">
                         <h2>Informe sua Senha</h2>
                         <div class="caixa-input">
@@ -880,17 +578,14 @@
                         </div>
                     </div>
                     <div id="errorMessage" style="color: red; font-weight: bold; margin-bottom: 10px;"></div>
-
                     <div class="login-btn-wrapper">
                         <button type="submit" class="login-form-button">Log in</button>
                         <a href="Cadastro.html" class="login-link">Não possui uma conta? Cadastrar-se</a>
                     </div>
-
                 </form>
             </div>
         </section>
     </main>
-
     <footer>
         <p>&copy; 2025 Calmamente. Todos os direitos reservados.</p>
         <div class="links">
@@ -899,7 +594,6 @@
             <a href="#" id="helpLink">Ajuda</a>
         </div>
     </footer>
-
     <div class="modal-overlay" id="termsModal">
         <div class="modal-content">
             <button class="close-button">&times;</button>
@@ -920,7 +614,6 @@
             <p>Estes Termos de Uso serão regidos e interpretados de acordo com as leis do Brasil.</p>
         </div>
     </div>
-
     <div class="modal-overlay" id="privacyModal">
         <div class="modal-content">
             <button class="close-button">&times;</button>
@@ -930,115 +623,4 @@
             <h3>2. Uso das Informações</h3>
             <p>Utilizamos as informações coletadas para: fornecer e melhorar nossos serviços; personalizar sua experiência no site; comunicar-nos com você sobre atualizações, promoções e informações relevantes; analisar o uso do site para otimizar o conteúdo e a funcionalidade; e garantir a segurança e a integridade de nossa plataforma.</p>
             <h3>3. Compartilhamento de Informações</h3>
-            <p>Não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros, exceto nas seguintes circunstâncias: com seu consentimento explícito; para cumprir obrigações legais; para proteger nossos direitos, privacidade, segurança ou propriedade; ou com provedores de serviços que nos auxiliam na operação do site, desde que eles concordem em manter a confidencialidade de suas informações.</p>
-            <h3>4. Segurança dos Dados</h3>
-            <p>Implementamos medidas de segurança razoáveis para proteger suas informações contra acesso não autorizado, alteração, divulgação ou destruição. No entanto, nenhum método de transmissão pela internet ou armazenamento eletrônico é 100% seguro, e não podemos garantir segurança absoluta.</p>
-            <h3>5. Seus Direitos</h3>
-            <p>Você tem o direito de acessar, corrigir, atualizar ou solicitar a exclusão de suas informações pessoais a qualquer momento. Para exercer esses direitos, entre em contato conosco através dos canais fornecidos em nossa página de Contato.</p>
-            <h3>6. Cookies</h3>
-            <p>Nosso site utiliza cookies para melhorar sua experiência de navegação. Você pode configurar seu navegador para recusar todos ou alguns cookies, ou para alertá-lo quando os sites definirem ou acessarem cookies. No entanto, se você desativar ou recusar cookies, algumas partes do site podem se tornar inacessíveis ou não funcionar corretamente.</p>
-            <h3>7. Links para Terceiros</h3>
-            <p>Nosso site pode conter links para sites de terceiros. Não somos responsáveis pelas práticas de privacidade ou pelo conteúdo desses sites. Recomendamos que você revise as políticas de privacidade de qualquer site de terceiros que visitar.</p>
-            <h3>8. Alterações a Esta Política</h3>
-            <p>Podemos atualizar nossa Política de Privacidade periodicamente. Publicaremos quaisquer alterações nesta página e, se as alterações forem significativas, forneceremos um aviso mais proeminente. Recomendamos que você revise esta política regularmente para se manter informado sobre como protegemos suas informações.</p>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="helpModal">
-        <div class="modal-content">
-            <button class="close-button">&times;</button>
-            <h2>Ajuda e Suporte</h2>
-            <h3>1. Como me Registro?</h3>
-            <p>Para se registrar, clique no ícone de perfil no canto superior direito do cabeçalho e siga as instruções para criar sua conta. É rápido e fácil!</p>
-            <h3>2. Onde Encontro as Atividades?</h3>
-            <p>Todas as nossas atividades e recursos estão na seção "Atividades & Recursos" no menu principal. Lá você encontrará ferramentas como o registro de emoções, artigos e muito mais.</p>
-            <h3>3. Como Posso Contribuir?</h3>
-            <p>Se você tem sugestões, ideias ou deseja colaborar, por favor, entre em contato conosco através da página "Contato". Adoramos receber feedback e novas parcerias!</p>
-            <h3>4. Problemas Técnicos?</h3>
-            <p>Se estiver enfrentando algum problema técnico com o site, por favor, descreva o ocorrido em detalhes na nossa página de "Contato" ou envie um e-mail para suporte@calmamente.com.br. Nossa equipe fará o possível para ajudar.</p>
-            <h3>5. Como Funciona o Fórum?</h3>
-            <p>Nosso fórum é um espaço seguro para compartilhar experiências, fazer perguntas e oferecer apoio. Para participar, basta se registrar e seguir as regras da comunidade. Você pode criar novos tópicos ou responder aos existentes.</p>
-            <h3>6. Posso Usar o Site no Celular?</h3>
-            <p>Sim! O site Calmamente é totalmente responsivo e foi projetado para funcionar perfeitamente em dispositivos móveis, tablets e computadores.</p>
-            <h3>7. Esqueci Minha Senha. O Que Faço?</h3>
-            <p>Na tela de login, clique em "Esqueci minha senha" e siga as instruções para redefinir. Um link será enviado para o seu e-mail cadastrado.</p>
-        </div>
-    </div>
-
-    <script>
-        // --- SCRIPT PARA OS MODAIS (TERMOS, PRIVACIDADE E AJUDA) ---
-
-        // Modal de Termos de Uso
-        const openTermsModalBtn = document.getElementById('termsLink'); // Alterado de openTermsModal para termsLink
-        const termsModalOverlay = document.getElementById('termsModal'); // Alterado de termsModalOverlay para termsModal
-        
-        if (openTermsModalBtn) {
-            openTermsModalBtn.addEventListener('click', (event) => { // Adicionado o parâmetro event
-                event.preventDefault(); // Previne o comportamento padrão do link
-                termsModalOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Impede a rolagem do corpo
-            });
-        }
-
-        // Modal de Política de Privacidade
-        const openPrivacyModalBtn = document.getElementById('privacyLink'); // Alterado de openPrivacyModal para privacyLink
-        const privacyModalOverlay = document.getElementById('privacyModal'); // Alterado de privacyModalOverlay para privacyModal
-
-        if (openPrivacyModalBtn) {
-            openPrivacyModalBtn.addEventListener('click', (event) => { // Adicionado o parâmetro event
-                event.preventDefault(); // Previne o comportamento padrão do link
-                privacyModalOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        }
-
-        // Modal de Ajuda
-        const openHelpModalBtn = document.getElementById('helpLink'); // Alterado de openHelpModal para helpLink
-        const helpModalOverlay = document.getElementById('helpModal'); // Alterado de helpModalOverlay para helpModal
-
-        if (openHelpModalBtn) {
-            openHelpModalBtn.addEventListener('click', (event) => { // Adicionado o parâmetro event
-                event.preventDefault(); // Previne o comportamento padrão do link
-                helpModalOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        }
-
-        // --- Botão Genérico de Fechar e Clique no Overlay para todos os Modais ---
-        // Seleciona todos os botões de fechar
-        const closeButtons = document.querySelectorAll('.modal-content .close-button');
-        closeButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                // Encontra o overlay modal pai e remove a classe 'active'
-                event.target.closest('.modal-overlay').classList.remove('active');
-                document.body.style.overflow = ''; // Restaura a rolagem do corpo
-            });
-        });
-
-        // Seleciona todos os overlays de modais para fechar ao clicar fora do conteúdo
-        const modalOverlays = document.querySelectorAll('.modal-overlay');
-        modalOverlays.forEach(overlay => {
-            overlay.addEventListener('click', (event) => {
-                if (event.target === overlay) {
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-
-
-        // Fechar qualquer modal com a tecla ESC
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                modalOverlays.forEach(overlay => {
-                    if (overlay.classList.contains('active')) {
-                        overlay.classList.remove('active');
-                        document.body.style.overflow = '';
-                    }
-                });
-            }
-        });
-    </script>
-
-</body>
-</html>
+            <p>Não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros, exceto nas seguintes circunstâncias: com seu consentimento explícito; para cumprir obrigações legais; para proteger nossos direitos, privacidade, segurança ou propriedade; ou com provedores de serviços que nos auxiliam na operação do site, desde que eles concordem em manter a confiden</p>
