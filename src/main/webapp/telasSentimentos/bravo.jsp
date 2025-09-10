@@ -1,0 +1,1125 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calmamente: Acalmando o Lumi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        :root {
+            /* PALETA DE CORES: "AMANHECER SERENO" */
+             --cor-nuvem: #FFFFFF; /* Branco Nuvem (mantido para os cards) */
+             --cor-grama-escura: #A8D8B9; /* Verde Pastel Vibrante */
+              --cor-primaria-acao: #66CCFF; /* Azul Brilhante */
+             --cor-roxo-divertido: #B388FF; /* Roxo Claro */
+            --cor-fundo-tenso: #2c3e50;
+            --cor-texto-tenso: #E2E8F0;
+            --cor-container-tenso: rgba(44, 62, 80, 0.6);
+            --cor-lumi-raiva: #e53e3e;
+            --cor-estrela: #f7fafc;
+            --cor-fundo-calmo-1: #FFDAB9;
+            --cor-fundo-calmo-2: #BEE3F8;
+            --cor-container-calmo: #ffffff;
+            --cor-texto-calmo: #2D3748;
+            --cor-acento-calmo: #4FD1C5;
+            --cor-grama-calma: #9AE6B4;
+            --cor-lumi-corpo: #fdeec9;
+            --cor-lumi-olhos: #4A5568;
+            --cor-botao-fundo: #f7fafc;
+            --cor-botao-borda: #E2E8F0;
+            --cor-texto-claro: #FFFFFF;
+             --cor-secundaria-acao: #FFD700; /* Amarelo Sol */
+            --cor-terciaria-acao: #FF99CC; /* Rosa Chiclete */
+            --fonte-titulo: 'Fredoka', sans-serif; /* Fonte mais arredondada e divertida */
+            --fonte-corpo: 'Nunito', sans-serif; /* Fonte legível e amigável */
+        }
+
+        body {
+            font-family: var(--fonte-corpo), sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--cor-fundo-tenso);
+            transition: background-color 4s ease-in-out, background-image 4s ease-in-out;
+            position: relative;
+        }
+
+        body.is-calm {
+            background-color: var(--cor-fundo-calmo-2);
+            background-image: linear-gradient(to bottom, var(--cor-fundo-calmo-1), var(--cor-fundo-calmo-2));
+        }
+
+        /* Estrelas */
+        .star {
+            position: absolute;
+            background-color: var(--cor-estrela);
+            border-radius: 50%;
+            box-shadow: 0 0 5px var(--cor-estrela);
+            animation: twinkle 5s linear infinite;
+            z-index: -1;
+            transition: opacity 2s ease;
+        }
+
+        .is-calm .star {
+            opacity: 0;
+        }
+
+        .s1 {
+            width: 1px;
+            height: 1px;
+            top: 15%;
+            left: 10%;
+            animation-duration: 4s;
+        }
+
+        .s2 {
+            width: 2px;
+            height: 2px;
+            top: 30%;
+            left: 80%;
+            animation-duration: 6s;
+        }
+
+        .s3 {
+            width: 1px;
+            height: 1px;
+            top: 50%;
+            left: 30%;
+            animation-duration: 3s;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Layout Principal */
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        /* ===========
+            SCROLLBAR 
+           =========== */
+ 
+ 
+        /* Customiza o scrollbar para navegadores WebKit (Chrome, Safari, Edge, Opera) */
+        ::-webkit-scrollbar {
+            width: 12px; /* Largura da barra de rolagem vertical */
+            height: 12px; /* Altura da barra de rolagem horizontal */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--cor-fundo-principal); /* Fundo da trilha do scrollbar */
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--cor-primaria-acao); /* Cor do "polegar" (draggable part) do scrollbar */
+            border-radius: 10px;
+            border: 3px solid var(--cor-fundo-principal); /* Adiciona uma borda ao polegar */
+        }
+        
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #33AADD; /* Cor mais escura no hover do polegar */
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: transparent; /* Canto onde as barras vertical e horizontal se encontram */
+        }
+        
+        /* FIM DOS ESTILOS PARA O SCROLLBAR */
+
+
+
+        /*===========
+            HEADER 
+          ===========
+        */
+     header {
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    box-shadow: 0 4px 8px var(--cor-sombra-leve);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: relative;
+    z-index: 1000;
+    max-height: 65px; /* Para manter o cabeçalho compacto */
+}
+
+.logo {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem; /* UM POUCO MAIOR */
+            font-weight: 700;
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.15); /* SOMBRA MAIS PROEMINENTE */
+            transition: transform 0.2s ease, text-shadow 0.2s ease;
+        }
+        .logo:hover {
+            transform: scale(1.02); /* MAIS BRINCALHÃO */
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+        }
+        
+        /* NOVO: Contêiner para centralizar os links e botão de perfil */
+        .nav-links-container { 
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espaço entre os links */
+}
+        /* NOVO: Estilos para os links do cabeçalho (Home e Sobre Nós) */
+       .nav-link {
+            text-decoration: none; /* Remove sublinhado */
+            color: var(--cor-texto-claro); /* Cor branca */
+            font-family: var(--fonte-titulo);
+            font-weight: 700;
+            transition: transform 0.2s ease, text-shadow 0.2s ease;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+            padding: 0.5rem 1rem; /* Adiciona padding para área clicável */
+            border-radius: 15px; /* Suavemente arredondado */
+            margin: 0 10px; /* Espaço entre os links */
+            font-size: 1.3rem; /* Tamanho padrão para todos os links */
+        }
+
+.nav-link:hover {
+            transform: translateY(-3px); /* Efeito de hover */
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+            background-color: rgba(255, 255, 255, 0.1); /* Fundo sutil no hover */
+        }
+
+
+        /* Tamanho específico para o Home */
+        .nav-link.home {
+    font-size: 1.45rem; /* Tamanho do Home diminuído */
+}
+
+/* Tamanho específico para o Sobre Nós */
+.nav-link.about-us {
+    font-size: 1.45rem; /* Tamanho do Sobre Nós */
+}
+
+        /* Container de Conteúdo */
+        .content-wrapper {
+            background-color: var(--cor-container-tenso);
+            backdrop-filter: blur(8px);
+            padding: 2.5rem 3rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background-color 2s ease, color 2s ease, border-color 2s ease;
+        }
+
+        .is-calm .content-wrapper {
+            background-color: var(--cor-container-calmo);
+            border-color: transparent;
+            box-shadow: 0 10px 30px rgba(45, 55, 72, 0.1);
+        }
+
+        .content-wrapper h1 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--cor-texto-tenso);
+            margin-bottom: 1rem;
+            transition: color 2s ease;
+        }
+
+        .is-calm .content-wrapper h1 {
+            color: var(--cor-acento-calmo);
+        }
+
+        .content-wrapper p {
+            font-size: 1.2rem;
+            color: var(--cor-texto-tenso);
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            transition: color 2s ease;
+        }
+
+        .is-calm .content-wrapper p {
+            color: var(--cor-texto-calmo);
+        }
+
+        .activity-area {
+            margin: 0 auto 1.5rem;
+            min-height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Lumi e Animações */
+        .lumi-container {
+            position: relative;
+            transform-origin: bottom center;
+        }
+
+        .lumi-container.is-angry {
+            animation: shake 0.5s infinite;
+        }
+
+        .lumi-container.is-calmed {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .lumi-body {
+            width: 180px;
+            height: 160px;
+            background-color: var(--cor-lumi-corpo);
+            border-radius: 50% 50% 45% 45%;
+            position: relative;
+        }
+
+        .lumi-anger-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--cor-lumi-raiva);
+            border-radius: inherit;
+            opacity: 1;
+            transition: opacity 1.5s ease-out;
+            pointer-events: none;
+            animation: pulse-red 2s infinite;
+        }
+
+        @keyframes pulse-red {
+            50% {
+                box-shadow: 0 0 35px 5px var(--cor-lumi-raiva);
+            }
+        }
+
+        .lumi-eyes, .eyebrows, .lumi-mouth {
+            --cor-lumi-olhos: #4A5568;
+        }
+
+        .is-calm .lumi-eyes, .is-calm .eyebrows, .is-calm .lumi-mouth {
+            --cor-lumi-olhos: #2D3748;
+        }
+
+        .lumi-eyes {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%);
+            display: flex;
+            gap: 30px;
+        }
+
+        .lumi-eye {
+            width: 15px;
+            height: 20px;
+            background-color: var(--cor-lumi-olhos);
+            border-radius: 50%;
+            transition: background-color 2s ease;
+        }
+
+        .lumi-mouth {
+            position: absolute;
+            bottom: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 20px;
+            border: 3px solid var(--cor-lumi-olhos);
+            border-color: transparent transparent var(--cor-lumi-olhos) transparent;
+            border-radius: 0 0 20px 20px;
+            transition: all 0.5s ease;
+        }
+
+        .eyebrows {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 20px;
+            transition: opacity 0.5s ease, background-color 2s ease;
+        }
+
+        .eyebrow {
+            position: absolute;
+            width: 35px;
+            height: 5px;
+            background-color: var(--cor-lumi-olhos);
+            border-radius: 5px;
+        }
+
+        .eyebrow.left {
+            left: 0;
+            transform: rotate(15deg);
+        }
+
+        .eyebrow.right {
+            right: 0;
+            transform: rotate(-15deg);
+        }
+
+        .is-calmed .eyebrows {
+            opacity: 0;
+        }
+
+        .is-calmed .lumi-mouth {
+            border-radius: 0 0 40px 40px;
+            height: 25px;
+            bottom: 20%;
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-5px);
+            }
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .lumi-container.is-breathing {
+            animation: breathe-body 3s ease-in-out;
+        }
+
+        @keyframes breathe-body {
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .lumi-container.is-stomping {
+            animation: stomp 0.8s ease-in-out;
+        }
+
+        @keyframes stomp {
+            25% {
+                transform: translateY(-20px);
+            }
+            50% {
+                transform: translateY(0);
+            }
+            75% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .lumi-container.is-rocking {
+            animation: gentle-rock 2.5s ease-in-out;
+        }
+
+        @keyframes gentle-rock {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-8deg);
+            }
+            75% {
+                transform: rotate(8deg);
+            }
+        }
+
+        /* Botões de Escolha */
+        #calming-choices {
+            margin-top: 1.5rem;
+            border-top: 2px dashed var(--cor-texto-tenso);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            transition: border-color 2s ease;
+        }
+
+        .is-calm #calming-choices {
+            border-top-color: #CBD5E0;
+        }
+
+        .choice-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid var(--cor-botao-borda);
+            background-color: var(--cor-botao-fundo);
+            padding: 1rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease, background-color 0.3s ease;
+            min-width: 120px;
+        }
+
+        .is-calm .choice-button {
+            background-color: #fff;
+            border-color: #E2E8F0;
+        }
+
+        .choice-button:hover {
+            transform: translateY(-5px);
+            border-color: var(--cor-acento-calmo);
+            box-shadow: 0 8px 20px rgba(79,209,197,0.2);
+        }
+
+        .choice-button i {
+            font-size: 2.5rem;
+            color: var(--cor-texto-calmo);
+            transition: color 0.3s ease;
+        }
+
+        .choice-button:hover i {
+            color: var(--cor-acento-calmo);
+        }
+        
+        .choice-button span {
+            font-family: var(--fonte-titulo);
+            font-size: 1rem;
+            font-weight: 500;
+            color: #4A5568;
+        }
+        
+        .choice-button.is-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .is-calm .user-profile-button {
+            background-color: var(--cor-roxo-divertido);
+        }
+        .is-calm .choice-button.is-disabled {
+            background-color: #F7FAFC;
+        }
+        
+        
+
+        /* === INÍCIO: ESTILOS PARA O MENU DE USUÁRIO === */
+
+        /* Grupo do usuário (botão de perfil + dropdown) */
+.user-nav-group {
+    position: relative; /* Necessário para posicionar o dropdown */
+    display: flex;
+    align-items: center;
+}
+
+        .user-nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Botão de perfil */
+ .user-profile-button {
+            background-color: var(--cor-roxo-divertido);
+            color: var(--cor-texto-claro);
+            border: none;
+            border-radius: 50%;
+            width: 55px; /* UM POUCO MAIOR */
+            height: 55px; /* UM POUCO MAIOR */
+            font-size: 2rem; /* ÍCONE MAIOR */
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.25); /* SOMBRA MAIS SUAVE */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative; /* Para a bolha de notificação se necessário */
+        }
+/* Ícone do usuário */
+.user-profile-button i {
+    pointer-events: none; /* Garante que o clique seja no botão, não no ícone */
+}
+
+        @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+  .user-profile-button:hover {
+            background-color: #9966FF; /* Roxo um pouco mais escuro */
+            transform: translateY(-3px) rotate(5deg); /* MAIS BRINCALHÃO */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+      /* Conteúdo do dropdown */
+.dropdown-content {
+            display: none; /* Escondido por padrão */
+            position: absolute;
+            top: calc(100% + 15px); /* Posição abaixo do botão, um pouco mais afastado */
+            right: 0;
+            background-color: var(--cor-nuvem);
+            min-width: 250px; /* UM POUCO MAIOR */
+            box-shadow: 0 10px 20px 0 rgba(0,0,0,0.25); /* SOMBRA MAIS PRONUNCIADA */
+            border-radius: 20px; /* MAIS ARREDONDADO */
+            z-index: 1;
+            overflow: hidden; /* Garante que os filhos respeitem o border-radius */
+            animation: fadeInScale 0.4s ease-out; /* NOVA ANIMAÇÃO */
+            border: 2px solid var(--cor-primaria-acao); /* Borda colorida */
+        }
+
+.dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-content .user-info {
+            padding: 1.2rem 1.8rem; /* MAIOR PADDING */
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem; /* TEXTO MAIOR */
+            color: var(--cor-texto-escuro);
+            background-color: #e6f7ff; /* FUNDO MAIS CLARO E AMIGÁVEL */
+            border-bottom: 2px solid var(--cor-primaria-acao); /* Borda mais forte */
+            text-align: center; /* CENTRALIZADO */
+        }
+
+        .dropdown-content .user-info strong {
+            color: var(--cor-roxo-divertido);
+            display: block; /* Nome em nova linha */
+            margin-top: 5px;
+        }
+
+        .dropdown-content a {
+            color: var(--cor-texto-medio);
+            padding: 1.2rem 1.8rem; /* MAIOR PADDING */
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px; /* MAIOR ESPAÇAMENTO */
+            font-size: 1.2rem; /* TEXTO MAIOR */
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            border-bottom: 1px solid rgba(0,0,0,0.05); /* Separador suave */
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f0f8ff; /* Um azulzinho bem clarinho no hover */
+            transform: translateX(5px); /* Desliza um pouco */
+        }
+        
+.dropdown-content a i {
+    margin-right: 8px;
+    color: var(--cor-secundaria);
+}
+        
+        /* Cor específica para o ícone de editar e sair */
+        .dropdown-content a .fa-pencil-alt { color: var(--cor-secundaria-acao); }
+        .dropdown-content a .fa-sign-out-alt { color: var(--cor-terciaria-acao); }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        /* === FIM: ESTILOS PARA O MENU DE USUÁRIO === */
+
+        img{
+            width: 80px; /* Logo um pouco maior */
+            height: auto; /* Mantém a proporção */
+            margin-right: 20px;
+        }
+
+        /*      ===========   
+          FOOTER 
+        ===========
+        */
+        footer {
+            background-color: var(--cor-grama-escura); /* Mesma cor da seção de ilhas */
+            color: var(--cor-texto-claro);
+            text-align: center;
+            padding: 3rem 5%; /* MAIOR PADDING */
+            font-size: 1.1rem; /* TEXTO MAIOR */
+            box-shadow: inset 0 6px 12px rgba(0,0,0,0.15); /* SOMBRA MAIS FORTE */
+            border-top-left-radius: 35px; /* MAIS ARREDONDADO */
+            border-top-right-radius: 35px; /* MAIS ARREDONDADO */
+            position: relative;
+            margin-top: 2rem; /* Adiciona margem superior para separar do main */
+        }
+        footer p {
+            margin-bottom: 1rem; /* Espaçamento abaixo do texto */
+        }
+
+        footer .links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem; /* MAIOR ESPAÇAMENTO */
+        }
+
+        footer .links a {
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 0.8rem 1rem; /* PADDING MAIOR PARA ÁREA CLICÁVEL */
+            font-weight: 700; /* MAIS NEGRITO */
+            border-radius: 15px; /* ARREDONDADO */
+            background-color: rgba(255,255,255,0.1); /* Fundo sutil */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        footer .links a:hover {
+            color: var(--cor-secundaria-acao);
+            transform: translateY(-3px) scale(1.05); /* MAIOR EFEITO DE HOVER */
+            background-color: rgba(255,255,255,0.2);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        /* ===========
+         MODAIS (TERMOS, PRIVACIDADE E AJUDA) 
+        ===========
+        */
+        .modal-overlay {
+            display: none; /* Oculto por padrão */
+            position: fixed; /* Fixado na tela */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente */
+            z-index: 1001; /* Acima de todo o conteúdo */
+            justify-content: center;
+            align-items: center;
+            opacity: 0; /* Começa invisível para transição */
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex; /* Exibe o overlay */
+            opacity: 1; /* Torna visível */
+        }
+
+            .modal-content {
+            /* Classe genérica para o conteúdo do modal */
+            background-color: var(--cor-nuvem); /* Fundo branco do modal */
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+
+            border-bottom-right-radius: 12px;
+            border-top-right-radius: 12px;
+            padding: 3.5rem;
+            max-width: 700px; /* Largura do modal */
+            width: 90%; /* Ajuste para telas menores */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform: translateY(20px); /* Começa um pouco abaixo para animação */
+            opacity: 0; /* Começa invisível para animação */
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            max-height: 80vh; /* Limita a altura do modal */
+            overflow-y: auto; /* Adiciona scroll se o conteúdo for maior que a altura */
+            text-align: left; /* Alinha o texto dentro do modal */
+            padding-right: 20px;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0); /* Sobe para a posição final */
+            opacity: 1; /* Torna visível */
+        }
+
+        .modal-content h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.8rem;
+            color: var(--cor-roxo-divertido);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
+        }
+
+        .modal-content h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.8rem;
+            color: var(--cor-primaria-acao);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid var(--cor-borda-elementos);
+            padding-bottom: 0.5rem;
+        }
+
+        .modal-content p {
+            font-family: var(--fonte-corpo);
+            font-size: 1rem;
+            color: var(--cor-texto-escuro);
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--cor-texto-medio);
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease;
+            z-index: 10; /* Garante que o botão esteja acima do conteúdo do modal */
+        }
+
+        .close-button:hover {
+            color: var(--cor-terciaria-acao); /* Rosa */
+            transform: rotate(90deg);
+        }
+
+        /* ===================
+              FIM DO FOOTER 
+           =================== */
+
+        body.is-calm footer {
+            background-color: var(--cor-grama-calma);
+            color: var(--cor-texto-calmo);
+        }
+    </style>
+</head>
+<body>
+    <div class="star s1"></div><div class="star s2"></div><div class="star s3"></div>
+
+     <header>
+    <a href="IlhaSentimento.jsp" class="logo">Calmamente</a>
+    <nav class="nav-links-container">
+        <a href="HomeLogado.jsp" class="nav-link" id="homeButton">
+            Home
+        </a>
+        <a href="SobreNosLogado.jsp" class="nav-link" id="aboutUsLink">
+            Sobre Nós
+        </a>
+        <a href="Atividades&Recursos.jsp" class="nav-link" id="activitiesResourcesButton">
+            Atividades & Recursos
+        </a>
+        <a href="Historico/historicov1" class="nav-link" id="contactButton">
+            Relatório
+        </a>    
+    </nav>
+    <div class="user-nav-group">
+        <button class="user-profile-button" id="userProfileBtn">
+            <i class="fas fa-user-circle"></i>
+        </button>
+        <div class="dropdown-content" id="userDropdownMenu">
+            <div class="user-info">
+                Olá, <strong>
+                <%
+                    String userName = (String) session.getAttribute("usuarioLogado");
+                    if (userName == null || userName.isEmpty()) { userName = "Usuário"; }
+                    out.print(userName);
+                %>
+                </strong>
+            </div>
+            <a href="../EditarPerfil.jsp"><i class="fas fa-pencil-alt"></i> Editar Perfil</a>
+            <a href="../telasHome/Home.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="content-wrapper">
+            <h1 id="main-title">O Lumi parece muito zangado.</h1>
+            <p id="main-text">Seu corpo está tenso e quente. O que podemos fazer para ajudá-lo a se sentir melhor? Escolha uma ação.</p>
+            
+            <div class="activity-area" id="activityArea">
+                <div class="lumi-container is-angry" id="lumiContainer">
+                    <div class="lumi-body">
+                        <div class="lumi-anger-overlay" id="lumiAngerOverlay"></div>
+                        <div class="eyebrows">
+                            <div class="eyebrow left"></div>
+                            <div class="eyebrow right"></div>
+                        </div>
+                        <div class="lumi-eyes">
+                            <div class="lumi-eye"></div>
+                            <div class="lumi-eye"></div>
+                        </div>
+                        <div class="lumi-mouth"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="calming-choices">
+                <button class="choice-button" id="choice-breath">
+                    <i class="fas fa-wind"></i>
+                    <span>Respirar Fundo</span>
+                </button>
+                <button class="choice-button" id="choice-rock">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>Balançar Devagar</span>
+                </button>
+                <button class="choice-button" id="choice-stomp">
+                    <i class="fas fa-shoe-prints"></i>
+                    <span>Pisar Forte</span>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <audio id="audio-calm-music" src="${pageContext.request.contextPath}/audios/calm-music.mp3" loop preload="auto"></audio>
+    
+    <footer>
+        <p>&copy; 2025 Calmamente. Todos os direitos reservados.</p>
+        <div class="links">
+            <a href="#" id="termsLink">Termos de Uso</a>
+            <a href="#" id="privacyLink">Política de Privacidade</a>
+            <a href="#" id="helpLink">Ajuda</a>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2>Termos de Uso</h2>
+            <h3>1. Aceitação dos Termos</h3>
+            <p>Ao acessar e utilizar o site Calmamente, você concorda em cumprir e estar vinculado a estes Termos de Uso. Se você não concorda com qualquer parte destes termos, por favor, não utilize nosso site.</p>
+            <h3>2. Uso do Conteúdo</h3>
+            <p>Todo o conteúdo fornecido neste site é apenas para fins informativos e educacionais. Não se destina a substituir aconselhamento profissional, diagnóstico ou tratamento. Sempre procure o conselho de um profissional de saúde qualificado para quaisquer perguntas que você possa ter sobre uma condição médica.</p>
+            <h3>3. Propriedade Intelectual</h3>
+            <p>Todo o conteúdo, design, gráficos, logotipos e outros materiais neste site são propriedade do Calmamente ou de seus licenciadores e são protegidos por leis de direitos autorais e marcas registradas. Você não pode reproduzir, distribuir, modificar ou criar trabalhos derivados de qualquer conteúdo sem permissão prévia por escrito.</p>
+            <h3>4. Conduta do Usuário</h3>
+            <p>Você concorda em usar o site de forma responsável e respeitosa. Não é permitido postar ou transmitir qualquer material que seja ilegal, difamatório, obsceno, ameaçador, invasivo da privacidade de terceiros, ou que possa constituir ou encorajar uma ofensa criminal, violar os direitos de qualquer parte ou que de outra forma dê origem a responsabilidade ou viole qualquer lei.</p>
+            <h3>5. Limitação de Responsabilidade</h3>
+            <p>O Calmamente não será responsável por quaisquer danos diretos, indiretos, incidentais, consequenciais ou punitivos decorrentes do seu acesso ou uso do site.</p>
+            <h3>6. Modificações dos Termos</h3>
+            <p>Reservamo-nos o direito de modificar estes Termos de Uso a qualquer momento. Quaisquer alterações serão efetivas imediatamente após a publicação no site. Seu uso continuado do site após a publicação de quaisquer alterações constitui sua aceitação dessas alterações.</p>
+            <h3>7. Lei Aplicável</h3>
+            <p>Estes Termos de Uso serão regidos e interpretados de acordo com as leis do Brasil.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2>Política de Privacidade</h2>
+            <h3>1. Coleta de Informações</h3>
+            <p>Coletamos informações que você nos fornece diretamente, como nome, endereço de e-mail e outras informações de contato quando você se registra, preenche um formulário ou interage com nossos serviços. Também podemos coletar automaticamente certas informações sobre seu dispositivo e uso do site, como endereço IP, tipo de navegador e páginas visitadas, por meio de cookies e tecnologias semelhantes.</p>
+            <h3>2. Uso das Informações</h3>
+            <p>Utilizamos as informações coletadas para: fornecer e melhorar nossos serviços; personalizar sua experiência no site; comunicar-nos com você sobre atualizações, promoções e informações relevantes; analisar o uso do site para otimizar o conteúdo e a funcionalidade; e garantir a segurança e a integridade de nossa plataforma.</p>
+            <h3>3. Compartilhamento de Informações</h3>
+            <p>Não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros, exceto nas seguintes circunstâncias: com seu consentimento explícito; para cumprir obrigações legais; para proteger nossos direitos, privacidade, segurança ou propriedade; ou com provedores de serviços que nos auxiliam na operação do site, desde que eles concordem em manter a confidencialidade de suas informações.</p>
+            <h3>4. Segurança dos Dados</h3>
+            <p>Implementamos medidas de segurança razoáveis para proteger suas informações contra acesso não autorizado, alteração, divulgação ou destruição. No entanto, nenhum método de transmissão pela internet ou armazenamento eletrônico é 100% seguro, e não podemos garantir segurança absoluta.</p>
+            <h3>5. Seus Direitos</h3>
+            <p>Você tem o direito de acessar, corrigir, atualizar ou solicitar a exclusão de suas informações pessoais a qualquer momento. Para exercer esses direitos, entre em contato conosco através dos canais fornecidos em nossa página de Contato.</p>
+            <h3>6. Cookies</h3>
+            <p>Nosso site utiliza cookies para melhorar sua experiência de navegação. Você pode configurar seu navegador para recusar todos ou alguns cookies, ou para alertá-lo quando os sites definirem ou acessarem cookies. No entanto, se você desativar ou recusar cookies, algumas partes do site podem se tornar inacessíveis ou não funcionar corretamente.</p>
+            <h3>7. Links para Terceiros</h3>
+            <p>Nosso site pode conter links para sites de terceiros. Não somos responsáveis pelas práticas de privacidade ou pelo conteúdo desses sites. Recomendamos que você revise as políticas de privacidade de qualquer site de terceiros que visitar.</p>
+            <h3>8. Alterações a Esta Política</h3>
+            <p>Podemos atualizar nossa Política de Privacidade periodicamente. Publicaremos quaisquer alterações nesta página e, se as alterações forem significativas, forneceremos um aviso mais proeminente. Recomendamos que você revise esta política regularmente para se manter informado sobre como protegemos suas informações.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="helpModal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2>Ajuda e Suporte</h2>
+            <h3>1. Como me Registro?</h3>
+            <p>Para se registrar, clique no ícone de perfil no canto superior direito do cabeçalho e siga as instruções para criar sua conta. É rápido e fácil!</p>
+            <h3>2. Onde Encontro as Atividades?</h3>
+            <p>Todas as nossas atividades e recursos estão na seção "Atividades & Recursos" no menu principal. Lá você encontrará ferramentas como o registro de emoções, artigos e muito mais.</p>
+            <h3>3. Como Posso Contribuir?</h3>
+            <p>Se você tem sugestões, ideias ou deseja colaborar, por favor, entre em contato conosco através da página "Contato". Adoramos receber feedback e novas parcerias!</p>
+            <h3>4. Problemas Técnicos?</h3>
+            <p>Se estiver enfrentando algum problema técnico com o site, por favor, descreva o ocorrido em detalhes na nossa página de "Contato" ou envie um e-mail para suporte@calmamente.com.br. Nossa equipe fará o possível para ajudar.</p>
+            <h3>5. Como Funciona o Fórum?</h3>
+            <p>Nosso fórum é um espaço seguro para compartilhar experiências, fazer perguntas e oferecer apoio. Para participar, basta se registrar e seguir as regras da comunidade. Você pode criar novos tópicos ou responder aos existentes.</p>
+            <h3>6. Posso Usar o Site no Celular?</h3>
+            <p>Sim! O site Calmamente é totalmente responsivo e foi projetado para funcionar perfeitamente em dispositivos móveis, tablets e computadores.</p>
+            <h3>7. Esqueci Minha Senha. O Que Faço?</h3>
+            <p>Na tela de login, clique em "Esqueci minha senha" e siga as instruções para redefinir. Um link será enviado para o seu e-mail cadastrado.</p>
+        </div>
+    </div>
+
+    <script>
+        const lumiContainer = document.getElementById('lumiContainer');
+        const lumiAngerOverlay = document.getElementById('lumiAngerOverlay');
+        const mainTitle = document.getElementById('main-title');
+        const mainText = document.getElementById('main-text');
+        const audioCalmMusic = document.getElementById('audio-calm-music');
+        const choiceButtons = document.querySelectorAll('.choice-button');
+
+        let actionsTaken = 0;
+        const actionsNeeded = 4;
+        let isCalmed = false;
+        let isAnimating = false;
+
+        choiceButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (isCalmed || isAnimating) return;
+                isAnimating = true;
+                handleCareAction(button.id);
+            });
+        });
+
+        function handleCareAction(actionId) {
+            actionsTaken++;
+            
+            switch(actionId) {
+                case 'choice-breath':
+                    lumiContainer.classList.add('is-breathing');
+                    setTimeout(() => lumiContainer.classList.remove('is-breathing'), 3000);
+                    break;
+                case 'choice-rock':
+                    lumiContainer.classList.add('is-rocking');
+                    setTimeout(() => lumiContainer.classList.remove('is-rocking'), 2500);
+                    break;
+                case 'choice-stomp':
+                    lumiContainer.classList.add('is-stomping');
+                    setTimeout(() => lumiContainer.classList.remove('is-stomping'), 800);
+                    break;
+            }
+
+            const newOpacity = 1 - (actionsTaken / actionsNeeded);
+            lumiAngerOverlay.style.opacity = newOpacity;
+
+            if (actionsTaken >= actionsNeeded) {
+                isCalmed = true;
+                choiceButtons.forEach(b => b.classList.add('is-disabled'));
+                setTimeout(startCalmingSequence, 2000);
+            } else {
+                setTimeout(() => isAnimating = false, 2500);
+            }
+        }
+
+        function startCalmingSequence() {
+            lumiContainer.classList.remove('is-angry');
+            lumiContainer.classList.add('is-calmed');
+            document.body.classList.add('is-calm');
+
+            mainTitle.textContent = "O Lumi está calmo agora!";
+            mainText.innerHTML = "Uau! Fazer essas coisas ajudou o Lumi a se sentir melhor.<br>Bom trabalho em equipe!";
+            
+            if (audioCalmMusic) {
+                audioCalmMusic.volume = 0.5;
+                audioCalmMusic.play();
+            }
+        }
+
+         // Lógica para o dropdown do perfil do usuário
+        const userProfileBtn = document.getElementById('userProfileBtn');
+        const userDropdownMenu = document.getElementById('userDropdownMenu');
+
+        userProfileBtn.addEventListener('click', () => {
+            userDropdownMenu.classList.toggle('show');
+        });
+
+        // Fecha o dropdown se clicar fora dele
+        window.addEventListener('click', (event) => {
+            if (!userProfileBtn.contains(event.target) && !userDropdownMenu.contains(event.target)) {
+                userDropdownMenu.classList.remove('show');
+            }
+        });
+         // --- SCRIPT PARA OS MODAIS (TERMOS, PRIVACIDADE E AJUDA) ---
+
+        // Modal de Termos de Uso
+        const openTermsModalBtn = document.getElementById('termsLink'); // Alterado de openTermsModal para termsLink
+        const termsModalOverlay = document.getElementById('termsModal'); // Alterado de termsModalOverlay para termsModal
+        
+        if (openTermsModalBtn) {
+            openTermsModalBtn.addEventListener('click', (event) => { // Adicionado o parâmetro event
+                event.preventDefault(); // Previne o comportamento padrão do link
+                termsModalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Impede a rolagem do corpo
+            });
+        }
+
+        // Modal de Política de Privacidade
+        const openPrivacyModalBtn = document.getElementById('privacyLink'); // Alterado de openPrivacyModal para privacyLink
+        const privacyModalOverlay = document.getElementById('privacyModal'); // Alterado de privacyModalOverlay para privacyModal
+
+        if (openPrivacyModalBtn) {
+            openPrivacyModalBtn.addEventListener('click', (event) => { // Adicionado o parâmetro event
+                event.preventDefault(); // Previne o comportamento padrão do link
+                privacyModalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        // Modal de Ajuda
+        const openHelpModalBtn = document.getElementById('helpLink'); // Alterado de openHelpModal para helpLink
+        const helpModalOverlay = document.getElementById('helpModal'); // Alterado de helpModalOverlay para helpModal
+
+        if (openHelpModalBtn) {
+            openHelpModalBtn.addEventListener('click', (event) => { // Adicionado o parâmetro event
+                event.preventDefault(); // Previne o comportamento padrão do link
+                helpModalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        // --- Botão Genérico de Fechar e Clique no Overlay para todos os Modais ---
+        // Seleciona todos os botões de fechar
+        const closeButtons = document.querySelectorAll('.modal-content .close-button');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                // Encontra o overlay modal pai e remove a classe 'active'
+                event.target.closest('.modal-overlay').classList.remove('active');
+                document.body.style.overflow = ''; // Restaura a rolagem do corpo
+            });
+        });
+
+        // Seleciona todos os overlays de modais para fechar ao clicar fora do conteúdo
+        const modalOverlays = document.querySelectorAll('.modal-overlay');
+        modalOverlays.forEach(overlay => {
+            overlay.addEventListener('click', (event) => {
+                if (event.target === overlay) {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+
+        // Fechar qualquer modal com a tecla ESC
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                modalOverlays.forEach(overlay => {
+                    if (overlay.classList.contains('active')) {
+                        overlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
